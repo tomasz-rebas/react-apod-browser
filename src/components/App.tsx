@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import getPictureUrls from '../functions/getPictureUrls';
 import data from '../data.json';
+import Tile from './Tile';
 
 export default function App() {
 
@@ -23,7 +24,11 @@ export default function App() {
         console.log(pictureUrls);
     }, []);
 
+    const tiles = pictureUrls.map(url => <Tile url={url}/>)
+
     return (
-        <div>Hello there!</div>
-    )
+        <div>
+            {pictureUrls ? tiles : ''}
+        </div>
+    );
 }
