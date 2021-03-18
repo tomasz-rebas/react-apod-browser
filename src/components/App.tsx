@@ -27,8 +27,8 @@ export default function App() {
     const tiles = pictureUrls.map(url => <Tile url={url}/>)
 
     return (
-        <div>
+        <main>
             {pictureUrls ? tiles : ''}
-        </div>
+        </main>
     );
 }
