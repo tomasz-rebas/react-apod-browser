@@ -1,3 +1,7 @@
+body {
+    background-color: #333;
+}
+
 main {
     display: flex;
     flex-direction: row;
@@ -5,8 +9,8 @@ main {
 }
 
 img {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     margin: 2px;
     object-fit: cover;
 }
