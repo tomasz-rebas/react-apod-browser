@@ -22,7 +22,7 @@ export default function Tile( { url, date }: Props ) {
         const month = monthNames[dateObj.getMonth()];
         const year = dateObj.getFullYear();
 
-        return `${day} ${month}\n${year}`;
+        return <div className={styleDate}>{day} {month}<br/>{year}</div>;
     }
 
     const style = css`
@@ -37,6 +37,9 @@ export default function Tile( { url, date }: Props ) {
     `;
 
     const styleOverlay = css`
+        display: flex;
+        justify-content: center;
+        align-items: center;
         position: absolute;
         left: 0;
         bottom: 0;
@@ -44,14 +47,20 @@ export default function Tile( { url, date }: Props ) {
         height: inherit;
         vertical-align: center;
         text-decoration: none;
-        z-index: 2;
-        color: white;
+        z-index: 1;
+        color: #dddddd;
         background-color: black;
         opacity: 0;
         &:hover {
-            opacity: 0.7;
+            opacity: 0.8;
         }
         transition: 0.4s;
+    `;
+
+    const styleDate = css`
+        text-align: center;
+        z-index: 2;
+        font-size: 1.8em;
     `;
 
     return (
