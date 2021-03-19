@@ -1,11 +1,13 @@
 import React from 'react';
 import { css } from '@emotion/css';
+import { Link } from 'react-router-dom';
 
 type Props = {
-    url: string
+    url: string,
+    date: string
 }
 
-export default function Tile( { url }: Props ) {
+export default function Tile( { url, date }: Props ) {
 
     function getLinkLocation(fullUrl: string) {
         const arr = fullUrl.split('/');
@@ -25,12 +27,14 @@ export default function Tile( { url }: Props ) {
     `;
 
     return (
-        <div>
-            <img 
-                src={url}
-                alt="APOD"
-                className={style}
-            />
-        </div>
+        <Link to={"/" + getLinkLocation(url)}>
+            <div>
+                <img 
+                    src={url}
+                    alt="APOD"
+                    className={style}
+                />
+            </div>
+        </Link>
     );
 }
