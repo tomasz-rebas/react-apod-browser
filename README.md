@@ -1,3 +1,15 @@
+# react-apod-browser
+
+Astronomy Picture of the Day Browser
+
+`Development in progress!`
+
+Features:
+- Fetches the data about Astronomy Picture of the Day from NASA's archive based on your time input.
+- Displays a list of fetched APODs in the form of clickable tiles.
+- Hover over the tile to display its corresponding date.
+- Click the tile to view detailed information about the APOD.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
