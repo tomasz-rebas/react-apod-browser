@@ -9,14 +9,21 @@ type Props = {
 
 export default function Tile( { url, date }: Props ) {
 
-    // function getLinkLocation(fullUrl: string) {
-    //     const arr = fullUrl.split('/');
-    //     const imgName = arr[arr.length - 1];
-    //     const imgNameWithoutExtension = imgName.substr(0, imgName.length - 4);
-    //     return imgNameWithoutExtension;
-    // }
+    function getDisplayDate(d: string) {
 
-    console.log(url);
+        const dateObj = new Date(d);
+
+        const monthNames = [
+            "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+        ];
+
+        const day = dateObj.getDate();
+        const month = monthNames[dateObj.getMonth()];
+        const year = dateObj.getFullYear();
+
+        return `${day} ${month}\n${year}`;
+    }
 
     const style = css`
         position: relative;
@@ -50,8 +57,7 @@ export default function Tile( { url, date }: Props ) {
     return (
         <Link to={"/" + date}>
             <div className={style}>
-                {/* <div className={styleOverlay}></div> */}
-                <div className={styleOverlay}>{date}</div>
+                <div className={styleOverlay}>{getDisplayDate(date)}</div>
             </div>
         </Link>
     );
