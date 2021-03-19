@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import getPictureUrls from '../functions/getPictureUrls';
 import data from '../data.json';
 import Tile from './Tile';
 import { css } from '@emotion/css';
@@ -7,6 +6,10 @@ import { css } from '@emotion/css';
 export default function App() {
 
     const [pictureUrls, setPictureUrls] = useState<Array<string>>([]);
+
+    function getPictureUrls(data: Array<{url: string}>) {
+        return data.map(element => element.url);
+    }
 
     async function fetchData() {
 
