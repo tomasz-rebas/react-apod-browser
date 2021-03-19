@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom';
 
 type Props = {
     url: string,
-    date: string
+    date: string,
+    thumbnailUrl: string
 }
 
-export default function Tile( { url, date }: Props ) {
+export default function Tile( { url, date, thumbnailUrl }: Props ) {
 
     function getDisplayDate(d: string) {
 
@@ -27,7 +28,7 @@ export default function Tile( { url, date }: Props ) {
 
     const style = css`
         position: relative;
-        background-image: url("${url}");
+        background-image: url("${thumbnailUrl ? thumbnailUrl : url}");
         background-size: 150px;
         background-repeat: no-repeat;
         background-size: cover;

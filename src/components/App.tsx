@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import localData from '../data2015.json';
+import localData from '../data2015_4.json';
 import Tile from './Tile';
 import { css } from '@emotion/css';
 import { BrowserRouter as Router } from 'react-router-dom';
@@ -10,7 +10,7 @@ export default function App() {
 
     // async function fetchData() {
 
-    //     const url = 'https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&start_date=2000-01-01&end_date=2000-02-01';
+    //     const url = 'https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&start_date=2017-04-01&end_date=2017-07-01&thumbs=true';
 
     //     try {
     //         const response = await fetch(url);
@@ -22,14 +22,17 @@ export default function App() {
 
     useEffect(() => {
         setApodData(localData);
+        console.log(apodData);
     }, []);
 
     const tiles = apodData.map(element => 
         <Tile 
             url={element.url}
             date={element.date}
+            thumbnailUrl={element.media_type === 'video' ? element.thumbnail_url : null}
             key={element.date}
-        />);
+        />
+    );
 
     const styleMain = css`
         display: flex;
