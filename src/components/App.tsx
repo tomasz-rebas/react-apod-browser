@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import data from '../data.json';
+import data from '../data2015.json';
 import Tile from './Tile';
 import { css } from '@emotion/css';
 
