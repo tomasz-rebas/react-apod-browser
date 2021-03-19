@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import getPictureUrls from '../functions/getPictureUrls';
 import data from '../data.json';
 import Tile from './Tile';
+import { css } from '@emotion/css';
 
 export default function App() {
 
@@ -24,10 +25,16 @@ export default function App() {
         console.log(pictureUrls);
     }, []);
 
-    const tiles = pictureUrls.map(url => <Tile url={url}/>)
+    const tiles = pictureUrls.map(url => <Tile url={url}/>);
+
+    const style = css`
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    `;
 
     return (
-        <main>
+        <main className={style}>
             {pictureUrls ? tiles : ''}
         </main>
     );
