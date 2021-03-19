@@ -22,7 +22,6 @@ export default function App() {
 
     useEffect(() => {
         setApodData(localData);
-        console.log(localData);
     }, []);
 
     const tiles = apodData.map(element => 
@@ -32,14 +31,14 @@ export default function App() {
             key={element.date}
         />);
 
-    const style = css`
+    const styleMain = css`
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
     `;
 
     return (
-        <main className={style}>
+        <main className={styleMain}>
             <Router>
                 {apodData ? tiles : ''}
             </Router>
