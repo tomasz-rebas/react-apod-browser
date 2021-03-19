@@ -10,6 +10,8 @@ Features:
 - Hover over the tile to display its corresponding date.
 - Click the tile to view detailed information about the APOD.
 
+Tech stack: ReactJS, React Router, TypeScript, Emotion
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
