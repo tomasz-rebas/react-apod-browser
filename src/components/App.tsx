@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import data from '../data2015.json';
 import Tile from './Tile';
 import { css } from '@emotion/css';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 export default function App() {
 
@@ -28,7 +29,7 @@ export default function App() {
         console.log(pictureUrls);
     }, []);
 
-    const tiles = pictureUrls.map(url => <Tile url={url}/>);
+    const tiles = pictureUrls.map(url => <Tile url={url} key={url}/>);
 
     const style = css`
         display: flex;
@@ -38,7 +39,9 @@ export default function App() {
 
     return (
         <main className={style}>
-            {pictureUrls ? tiles : ''}
+            <Router>
+                {pictureUrls ? tiles : ''}
+            </Router>
         </main>
     );
 }

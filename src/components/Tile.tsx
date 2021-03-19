@@ -7,6 +7,16 @@ type Props = {
 
 export default function Tile( { url }: Props ) {
 
+    function getLinkLocation(fullUrl: string) {
+        const arr = fullUrl.split('/');
+        const imgName = arr[arr.length - 1];
+        const imgNameWithoutExtension = imgName.substr(0, imgName.length - 4);
+        return imgNameWithoutExtension;
+    }
+
+    console.log(getLinkLocation(url));
+    console.log(url);
+
     const style = css`
         width: 150px;
         height: 150px;
