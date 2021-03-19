@@ -9,14 +9,13 @@ type Props = {
 
 export default function Tile( { url, date }: Props ) {
 
-    function getLinkLocation(fullUrl: string) {
-        const arr = fullUrl.split('/');
-        const imgName = arr[arr.length - 1];
-        const imgNameWithoutExtension = imgName.substr(0, imgName.length - 4);
-        return imgNameWithoutExtension;
-    }
+    // function getLinkLocation(fullUrl: string) {
+    //     const arr = fullUrl.split('/');
+    //     const imgName = arr[arr.length - 1];
+    //     const imgNameWithoutExtension = imgName.substr(0, imgName.length - 4);
+    //     return imgNameWithoutExtension;
+    // }
 
-    console.log(getLinkLocation(url));
     console.log(url);
 
     const style = css`
@@ -27,7 +26,7 @@ export default function Tile( { url, date }: Props ) {
     `;
 
     return (
-        <Link to={"/" + getLinkLocation(url)}>
+        <Link to={"/" + date}>
             <div>
                 <img 
                     src={url}
