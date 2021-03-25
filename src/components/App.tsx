@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import localData from '../data/data2015_4.json';
 import Tile from './Tile';
 import { css } from '@emotion/css';
-import { BrowserRouter as Router } from 'react-router-dom';
 
 export default function App() {
 
@@ -42,9 +41,7 @@ export default function App() {
 
     return (
         <main className={styleMain}>
-            <Router>
-                {apodData ? tiles : ''}
-            </Router>
+            {apodData ? tiles : ''}
         </main>
     );
 }
