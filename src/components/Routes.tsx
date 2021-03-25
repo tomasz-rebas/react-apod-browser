@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import localData from '../data/data2015_4.json';
-import Tile from './Tile';
-import { css } from '@emotion/css';
+import { Switch, Route } from 'react-router-dom';
+import Grid from '../pages/Grid';
 
 export default function Routes() {
 
@@ -24,24 +24,18 @@ export default function Routes() {
         console.log(apodData);
     }, []);
 
-    const tiles = apodData.map(element => 
-        <Tile 
-            url={element.url}
-            date={element.date}
-            thumbnailUrl={element.media_type === 'video' ? element.thumbnail_url : null}
-            key={element.date}
-        />
-    );
-
-    const styleMain = css`
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-    `;
-
     return (
-        <main className={styleMain}>
-            {apodData ? tiles : ''}
-        </main>
+        <>
+            {
+                apodData ?    
+                <Switch>
+                    <Route 
+                        path="/"
+                        render={() => <Grid data={apodData}/>}
+                    />
+                </Switch> : 
+                ''
+            }
+        </>
     );
 }
