@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import localData from '../data2015_4.json';
+import localData from '../data/data2015_4.json';
 import Tile from './Tile';
 import { css } from '@emotion/css';
 import { BrowserRouter as Router } from 'react-router-dom';
