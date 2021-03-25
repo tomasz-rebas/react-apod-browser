@@ -65,7 +65,7 @@ export default function Tile( { url, date, thumbnailUrl }: Props ) {
     `;
 
     return (
-        <Link to={"/" + date}>
+        <Link to={`/${date}`}>
             <div className={style}>
                 <div className={styleOverlay}>{getDisplayDate(date)}</div>
             </div>

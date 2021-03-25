@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import localData from '../data/data2015_4.json';
 import { Switch, Route } from 'react-router-dom';
 import Grid from '../pages/Grid';
+import PicturePage from '../pages/PicturePage';
 
 export default function Routes() {
 
@@ -21,8 +22,15 @@ export default function Routes() {
 
     useEffect(() => {
         setApodData(localData);
-        console.log(apodData);
     }, []);
+
+    const pictureRoutes = apodData.map(element => 
+        <Route 
+            exact path={`/${element.date}`}
+            render={() => <PicturePage data={element}/>}
+            key={element.date}
+        />
+    );
 
     return (
         <Switch>
@@ -30,6 +38,7 @@ export default function Routes() {
                 exact path="/"
                 render={() => <Grid data={apodData}/>}
             />
+            {pictureRoutes}
         </Switch>
     );
 }
