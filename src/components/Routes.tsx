@@ -3,7 +3,7 @@ import localData from '../data/data2015_4.json';
 import Tile from './Tile';
 import { css } from '@emotion/css';
 
-export default function App() {
+export default function Routes() {
 
     const [apodData, setApodData] = useState<Array<any>>([]);
 
