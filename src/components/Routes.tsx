@@ -25,17 +25,11 @@ export default function Routes() {
     }, []);
 
     return (
-        <>
-            {
-                apodData ?    
-                <Switch>
-                    <Route 
-                        path="/"
-                        render={() => <Grid data={apodData}/>}
-                    />
-                </Switch> : 
-                ''
-            }
-        </>
+        <Switch>
+            <Route 
+                path="/"
+                render={() => <Grid data={apodData}/>}
+            />
+        </Switch>
     );
 }
