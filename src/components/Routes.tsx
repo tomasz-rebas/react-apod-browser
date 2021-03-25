@@ -27,7 +27,7 @@ export default function Routes() {
     return (
         <Switch>
             <Route 
-                path="/"
+                exact path="/"
                 render={() => <Grid data={apodData}/>}
             />
         </Switch>
