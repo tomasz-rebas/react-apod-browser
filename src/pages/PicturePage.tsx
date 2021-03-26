@@ -15,14 +15,21 @@ export default function PicturePage({ data }: Props) {
             justify-content: center;
         `,
         main: css`
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             max-width: 700px;
+        `,
+        header: css`
+            text-align: center;
         `,
         back: css`
             color: #ddd;
         ;`,
         picture: css`
             max-width: inherit;
-            max-height: 700px;
+            max-height: 500px;
+            object-fit: contain;
         `,
         p: css`
             text-align: justify;
@@ -37,14 +44,14 @@ export default function PicturePage({ data }: Props) {
             </Link>
             <div className={style.wrapper}>   
                 <main className={style.main}>
-                    <h1>{data.title}</h1>
+                    <h1 className={style.header}>{data.title}</h1>
                     <img 
                         className={style.picture}
                         src={data.url}
                         alt="APOD"
                     />
                     <p className={style.p}>{data.explanation}</p>
-                    <p>The photo taken by {data.copyright}</p>
+                    {data.copyright ? <p>The photo taken by {data.copyright}</p> : ''}
                 </main>
             </div>
         </div>
