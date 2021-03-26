@@ -23,51 +23,51 @@ export default function Tile( { url, date, thumbnailUrl }: Props ) {
         const month = monthNames[dateObj.getMonth()];
         const year = dateObj.getFullYear();
 
-        return <div className={styleDate}>{day} {month}<br/>{year}</div>;
+        return <div className={style.date}>{day} {month}<br/>{year}</div>;
     }
 
-    const style = css`
-        position: relative;
-        background-image: url("${thumbnailUrl ? thumbnailUrl : url}");
-        background-size: 150px;
-        background-repeat: no-repeat;
-        background-size: cover;
-        width: 150px;
-        height: 150px;
-        margin: 2px;
-    `;
-
-    const styleOverlay = css`
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: inherit;
-        height: inherit;
-        vertical-align: center;
-        text-decoration: none;
-        z-index: 1;
-        color: #dddddd;
-        background-color: black;
-        opacity: 0;
-        &:hover {
-            opacity: 0.8;
-        }
-        transition: 0.4s;
-    `;
-
-    const styleDate = css`
-        text-align: center;
-        z-index: 2;
-        font-size: 1.8em;
-    `;
+    const style = {
+            wrapper: css`
+            position: relative;
+            background-image: url("${thumbnailUrl ? thumbnailUrl : url}");
+            background-size: 150px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 150px;
+            height: 150px;
+            margin: 2px;
+        `,
+        overlay: css`
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: inherit;
+            height: inherit;
+            vertical-align: center;
+            text-decoration: none;
+            z-index: 1;
+            color: #dddddd;
+            background-color: black;
+            opacity: 0;
+            &:hover {
+                opacity: 0.8;
+            }
+            transition: 0.4s;
+        `,
+        date: css`
+            text-align: center;
+            z-index: 2;
+            font-size: 1.8em;
+        `
+    };
 
     return (
         <Link to={`/${date}`}>
-            <div className={style}>
-                <div className={styleOverlay}>{getDisplayDate(date)}</div>
+            <div className={style.wrapper}>
+                <div className={style.overlay}>{getDisplayDate(date)}</div>
             </div>
         </Link>
     );
