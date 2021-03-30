@@ -25,6 +25,7 @@ export default function PicturePage({ data }: Props) {
         `,
         back: css`
             color: #ddd;
+            margin-left: 15px;
         ;`,
         picture: css`
             max-width: inherit;
