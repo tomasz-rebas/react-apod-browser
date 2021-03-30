@@ -8,21 +8,30 @@ export default function Routes() {
 
     const [apodData, setApodData] = useState<Array<any>>([]);
 
-    // async function fetchData() {
+    const isInDev = true;
 
-    //     const url = 'https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&start_date=2017-04-01&end_date=2017-07-01&thumbs=true';
+    async function fetchData() {
 
-    //     try {
-    //         const response = await fetch(url);
-    //         const data = await response.json();
-    //     } catch (e) {
-    //         console.error('The error occured. ' + e);
-    //     }
-    // }
+        const url = 'https://api.nasa.gov/planetary/apod?api_key=wAdeucxqcxW23cUydKnHI5YGEbljt8aVE4NP0Y3L&start_date=2017-04-01&end_date=2017-06-01&thumbs=true';
+
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+            setApodData(data);
+        } catch (e) {
+            console.error('The error occured. ' + e);
+        }
+    }
 
     useEffect(() => {
-        setApodData(localData);
+        if (isInDev) {
+            setApodData(localData);
+        } else {
+            fetchData();
+        }
     }, []);
+
+    console.log(apodData);
 
     const pictureRoutes = apodData.map(element => 
         <Route 
