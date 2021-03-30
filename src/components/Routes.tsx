@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import localData from '../data/data2015_4.json';
 import { Switch, Route } from 'react-router-dom';
+
 import Grid from '../pages/Grid';
 import PicturePage from '../pages/PicturePage';
+import Start from '../pages/Start';
 
 export default function Routes() {
 
@@ -43,8 +45,11 @@ export default function Routes() {
 
     return (
         <Switch>
+            <Route exact path="/">
+                <Start/>
+            </Route>
             <Route 
-                exact path="/"
+                exact path="/home"
                 render={() => <Grid data={apodData}/>}
             />
             {pictureRoutes}
