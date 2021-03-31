@@ -49,6 +49,9 @@ export default function PicturePage({ data }: Props) {
             max-height: 500px;
             object-fit: contain;
         `,
+        iframeWrapper: css`
+            text-align: center;
+        `,
         p: css`
             text-align: justify;
             font-size: 1.2em;
@@ -64,11 +67,26 @@ export default function PicturePage({ data }: Props) {
                 <main className={style.main}>
                     <h1 className={style.header}>{data.title}</h1>
                     <h3 className={style.header}>{getDisplayDate(data.date)}</h3>
-                    <img 
-                        className={style.picture}
-                        src={data.url}
-                        alt="APOD"
-                    />
+                    {
+                        data.media_type === 'image' ?
+                        <img 
+                            className={style.picture}
+                            src={data.url}
+                            alt="APOD"
+                        /> :
+                        <div className={style.iframeWrapper}>
+                            <iframe 
+                                className=""
+                                width="560"
+                                height="315"
+                                src={data.url}
+                                frameBorder="0"
+                                allow="autoplay; encrypted-media"
+                                allowFullScreen>
+                            </iframe>
+                        </div>
+                    }
+                    
                     <p className={style.p}>{data.explanation}</p>
                     {data.copyright ? <p>The photo taken by {data.copyright}</p> : ''}
                 </main>
