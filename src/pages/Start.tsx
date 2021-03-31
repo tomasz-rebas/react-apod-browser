@@ -24,7 +24,7 @@ export default function Start() {
             <DateRangePicker
                 ranges={inputDateRanges}
                 months={2}
-                direction="horizontal"
+                direction="vertical"
                 showSelectionPreview={true}
                 moveRangeOnFirstSelection={false}
                 onChange={(item: any) => setInputDateRanges([item.selection])}

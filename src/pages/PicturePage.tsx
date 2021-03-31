@@ -9,6 +9,23 @@ type Props = {
 
 export default function PicturePage({ data }: Props) {
 
+    function getDisplayDate(d: string) {
+
+        const dateObj = new Date(d);
+
+        const monthNames = [
+            "January", "February", "March", "April", 
+            "May", "June", "July", "August", "September", 
+            "October", "November", "December"
+        ];
+
+        const day = dateObj.getDate();
+        const month = monthNames[dateObj.getMonth()];
+        const year = dateObj.getFullYear();
+
+        return `${day} ${month} ${year}`;
+    }
+
     const style = {
         wrapper: css`
             display: flex;
@@ -40,12 +57,13 @@ export default function PicturePage({ data }: Props) {
 
     return (
         <div>
-            <Link to="/">
+            <Link to="/home">
                 <h3 className={style.back}>&#60; Back</h3>
             </Link>
             <div className={style.wrapper}>   
                 <main className={style.main}>
                     <h1 className={style.header}>{data.title}</h1>
+                    <h3 className={style.header}>{getDisplayDate(data.date)}</h3>
                     <img 
                         className={style.picture}
                         src={data.url}
