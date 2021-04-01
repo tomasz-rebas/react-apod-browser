@@ -1,11 +1,15 @@
 import { css } from '@emotion/css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import { DateRangePicker } from 'react-date-range';
 
-export default function Start() {    
+type Props = {
+    fetchData: Function
+}
+
+export default function Start({ fetchData }: Props) {    
 
     const [inputDateRanges, setInputDateRanges] = useState<any>([
         {
@@ -15,13 +19,30 @@ export default function Start() {
         }
     ]);
 
-    useEffect(() => {
-        console.log(inputDateRanges);
-    }, [inputDateRanges]);
+    function handleClick() {
+        fetchData();
+    }
 
     const style = {
         wrapper: css`
             text-align: center;
+        `,
+        button: css`
+            display: block;
+            padding: 15px 30px 15px 30px;
+            margin: auto;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            font-family: inherit;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 3px;
+            color: #ddd;
+            background-color: #555;
+            cursor: pointer;
+            &:hover {
+                background-color: #888;
+            };
         `
     }
 
@@ -45,6 +66,12 @@ export default function Start() {
                 moveRangeOnFirstSelection={false}
                 onChange={(item: any) => setInputDateRanges([item.selection])}
             />
+            <button 
+                className={style.button}
+                onClick={handleClick}
+            >
+                Continue
+            </button>
         </div>
     );
 }

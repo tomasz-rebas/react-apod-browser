@@ -10,8 +10,6 @@ export default function Routes() {
 
     const [apodData, setApodData] = useState<Array<any>>([]);
 
-    const isInDev = true;
-
     async function fetchData() {
 
         const url = 'https://api.nasa.gov/planetary/apod?api_key=wAdeucxqcxW23cUydKnHI5YGEbljt8aVE4NP0Y3L&start_date=2017-04-01&end_date=2017-06-01&thumbs=true';
@@ -25,16 +23,6 @@ export default function Routes() {
         }
     }
 
-    useEffect(() => {
-        if (isInDev) {
-            setApodData(localData);
-        } else {
-            fetchData();
-        }
-    }, []);
-
-    console.log(apodData);
-
     const pictureRoutes = apodData.map(element => 
         <Route 
             exact path={`/${element.date}`}
@@ -46,7 +34,7 @@ export default function Routes() {
     return (
         <Switch>
             <Route exact path="/">
-                <Start/>
+                <Start fetchData={fetchData}/>
             </Route>
             <Route 
                 exact path="/home"
