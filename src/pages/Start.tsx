@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import { DateRangePicker } from 'react-date-range';
+import { addDays } from 'date-fns';
 
 type Props = {
     fetchData: Function
@@ -78,8 +79,8 @@ export default function Start({ fetchData }: Props) {
                 moveRangeOnFirstSelection={false}
                 onChange={(item: any) => setInputDateRanges([item.selection])}
                 minDate={new Date('January 16, 1995 00:00:00')}
-                maxDate={today}
-                shownDate={new Date(today.getFullYear(), today.getMonth(), (today.getDate() - 30))}
+                maxDate={new Date()}
+                shownDate={addDays(new Date(), -30)}
             />
             <Link to="/home">
                 <button 
