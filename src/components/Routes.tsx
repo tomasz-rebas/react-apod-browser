@@ -8,7 +8,14 @@ import Start from '../pages/Start';
 
 export default function Routes() {
 
-    const [apodData, setApodData] = useState<Array<any>>([]);
+    type ApodObj = {
+        url: string,
+        date: string,
+        media_type: string,
+        [key: string]: string
+    }
+
+    const [apodData, setApodData] = useState<Array<ApodObj>>([]);
 
     async function fetchData(startDate: string, endDate: string) {
 
