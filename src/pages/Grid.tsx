@@ -17,18 +17,24 @@ export default function Grid({ data }: Props) {
         />
     );
 
-    const style = css`
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-    `;
+    const style = {
+        back: css`
+            color: #ddd;
+            margin-left: 15px;
+        ;`,
+        grid: css`
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        `
+    };
 
     return (
         <div>
             <Link to="/">
-                <h3>&#60; Choose different date range</h3>
+                <h3 className={style.back}>&#60; Choose different date range</h3>
             </Link>
-            <div className={style}>
+            <div className={style.grid}>
                 {data ? tiles : ''}
             </div>
         </div>
