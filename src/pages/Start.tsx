@@ -1,5 +1,6 @@
 import { css } from '@emotion/css';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
@@ -80,12 +81,14 @@ export default function Start({ fetchData }: Props) {
                 maxDate={today}
                 shownDate={new Date(today.getFullYear(), today.getMonth(), (today.getDate() - 30))}
             />
-            <button 
-                className={style.button}
-                onClick={handleClick}
-            >
-                Continue
-            </button>
+            <Link to="/home">
+                <button 
+                    className={style.button}
+                    onClick={handleClick}
+                >
+                    Continue
+                </button>
+            </Link>
         </div>
     );
 }
