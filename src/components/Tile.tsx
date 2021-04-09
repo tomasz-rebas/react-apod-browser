@@ -1,5 +1,6 @@
 import { css } from '@emotion/css';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 type Props = {
     url: string,
@@ -8,6 +9,8 @@ type Props = {
 }
 
 export default function Tile( { url, date, thumbnailUrl }: Props ) {
+
+    const [isLoaded, setIsLoaded] = useState(false);
 
     function getDisplayDate(d: string) {
 
@@ -26,7 +29,7 @@ export default function Tile( { url, date, thumbnailUrl }: Props ) {
     }
 
     const style = {
-            wrapper: css`
+        wrapper: css`
             position: relative;
             background-image: url("${thumbnailUrl ? thumbnailUrl : url}");
             background-size: 150px;
@@ -60,11 +63,15 @@ export default function Tile( { url, date, thumbnailUrl }: Props ) {
             text-align: center;
             z-index: 2;
             font-size: 1.8em;
+        `,
+        img: css`
+            display: none;
         `
     };
 
     return (
         <Link to={`/${date}`}>
+            <img className={style.img} src={url} onLoad={() => {console.log('arrow'); setIsLoaded(true)}}/>
             <div className={style.wrapper}>
                 <div className={style.overlay}>{getDisplayDate(date)}</div>
             </div>

@@ -21,7 +21,7 @@ export default function Grid({ data }: Props) {
         back: css`
             color: #ddd;
             margin-left: 15px;
-        ;`,
+        `,
         grid: css`
             display: flex;
             flex-direction: row;
