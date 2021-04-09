@@ -20,7 +20,7 @@ export default function Start({ fetchData }: Props) {
     ]);
 
     function getQueryDate(dateObj: Date) {
-        const day = ('0' + (dateObj.getDate() + 1)).slice(-2);
+        const day = ('0' + dateObj.getDate()).slice(-2);
         const month = ('0' + (dateObj.getMonth() + 1)).slice(-2);
         const year = dateObj.getFullYear();
         return `${year}-${month}-${day}`;
@@ -76,7 +76,7 @@ export default function Start({ fetchData }: Props) {
                 showSelectionPreview={true}
                 moveRangeOnFirstSelection={false}
                 onChange={(item: any) => setInputDateRanges([item.selection])}
-                minDate={new Date('January 1, 1996 00:00:00')}
+                minDate={new Date('January 16, 1995 00:00:00')}
                 maxDate={today}
                 shownDate={new Date(today.getFullYear(), today.getMonth(), (today.getDate() - 30))}
             />
