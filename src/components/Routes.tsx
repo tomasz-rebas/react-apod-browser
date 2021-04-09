@@ -10,9 +10,9 @@ export default function Routes() {
 
     const [apodData, setApodData] = useState<Array<any>>([]);
 
-    async function fetchData() {
+    async function fetchData(startDate: string, endDate: string) {
 
-        const url = 'https://api.nasa.gov/planetary/apod?api_key=wAdeucxqcxW23cUydKnHI5YGEbljt8aVE4NP0Y3L&start_date=2017-04-01&end_date=2017-06-01&thumbs=true';
+        const url = `https://api.nasa.gov/planetary/apod?api_key=wAdeucxqcxW23cUydKnHI5YGEbljt8aVE4NP0Y3L&start_date=${startDate}&end_date=${endDate}&thumbs=true`;
 
         try {
             const response = await fetch(url);

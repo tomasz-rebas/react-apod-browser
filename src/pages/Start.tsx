@@ -19,8 +19,17 @@ export default function Start({ fetchData }: Props) {
         }
     ]);
 
+    function getQueryDate(dateObj: Date) {
+        const day = dateObj.getDate();
+        const month = dateObj.getMonth() + 1;
+        const year = dateObj.getFullYear();
+        return `${year}-${month}-${day}`;
+    }
+
     function handleClick() {
-        fetchData();
+        const startDate = getQueryDate(inputDateRanges[0].startDate);
+        const endDate = getQueryDate(inputDateRanges[0].endDate);
+        fetchData(startDate, endDate);
     }
 
     const style = {
