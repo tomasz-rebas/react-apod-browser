@@ -34,8 +34,6 @@ export default function Start({ fetchData }: Props) {
         fetchData(startDate, endDate);
     }
 
-    const today = new Date();
-
     const style = {
         wrapper: css`
             text-align: center;

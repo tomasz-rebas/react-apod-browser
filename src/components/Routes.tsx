@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import localData from '../data/data2015_4.json';
+import { useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import Grid from '../pages/Grid';
@@ -30,14 +29,14 @@ export default function Routes() {
         }
     }
 
-    const pictureRoutes = apodData.map(element => 
+    const pictureRoutes = apodData ? apodData.map(element => 
         <Route 
             exact path={`/${element.date}`}
             key={element.date}
         >
             <PicturePage data={element}/>
         </Route>
-    );
+    ) : '';
 
     return (
         <Switch>
