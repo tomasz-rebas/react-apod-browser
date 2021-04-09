@@ -26,9 +26,10 @@ export default function Routes() {
     const pictureRoutes = apodData.map(element => 
         <Route 
             exact path={`/${element.date}`}
-            render={() => <PicturePage data={element}/>}
             key={element.date}
-        />
+        >
+            <PicturePage data={element}/>
+        </Route>
     );
 
     return (
@@ -36,10 +37,9 @@ export default function Routes() {
             <Route exact path="/">
                 <Start fetchData={fetchData}/>
             </Route>
-            <Route 
-                exact path="/home"
-                render={() => <Grid data={apodData}/>}
-            />
+            <Route exact path="/home">
+                <Grid data={apodData}/>
+            </Route>
             {pictureRoutes}
         </Switch>
     );
