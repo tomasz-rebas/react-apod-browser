@@ -1,6 +1,6 @@
 import { css } from '@emotion/css';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 type Props = {
     url: string,
@@ -11,6 +11,8 @@ type Props = {
 export default function Tile( { url, date, thumbnailUrl }: Props ) {
 
     const [isLoaded, setIsLoaded] = useState(false);
+
+    url = thumbnailUrl ? thumbnailUrl : url;
 
     function getDisplayDate(d: string) {
 
@@ -28,11 +30,13 @@ export default function Tile( { url, date, thumbnailUrl }: Props ) {
         return <div className={style.date}>{day} {month} {year}</div>;
     }
 
+    useEffect(() => console.log(isLoaded), [isLoaded]);
+
     const style = {
         wrapper: css`
             display: flex;
             position: relative;
-            background-image: url("${thumbnailUrl ? thumbnailUrl : url}");
+            background-image: url("${url}");
             background-size: 150px;
             background-repeat: no-repeat;
             background-size: cover;
@@ -73,8 +77,12 @@ export default function Tile( { url, date, thumbnailUrl }: Props ) {
 
     return (
         <Link to={`/${date}`} className={style.wrapper}>
-            <img className={style.img} src={url} onLoad={() => {console.log('arrow'); setIsLoaded(true)}}/>
+            <img 
+                className={style.img}
+                src={url}
+                onLoad={() => setIsLoaded(true)}/>
             <div className={style.overlay}>{getDisplayDate(date)}</div>
+            {isLoaded ? '' : <h3>Loading</h3>}
         </Link>
     );
 }
