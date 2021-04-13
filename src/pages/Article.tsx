@@ -82,7 +82,9 @@ export default function PicturePage({ data }: Props) {
                                 src={data.url}
                                 frameBorder="0"
                                 allow="autoplay; encrypted-media"
-                                allowFullScreen>
+                                allowFullScreen
+                                title={data.title}
+                            >
                             </iframe>
                         </div>
                     }

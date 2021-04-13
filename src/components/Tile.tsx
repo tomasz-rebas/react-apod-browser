@@ -1,6 +1,6 @@
 import { css } from '@emotion/css';
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 type Props = {
     url: string,
@@ -11,8 +11,6 @@ type Props = {
 export default function Tile( { url, date, thumbnailUrl }: Props ) {
 
     const [isLoaded, setIsLoaded] = useState(false);
-
-    url = thumbnailUrl ? thumbnailUrl : url;
 
     function getDisplayDate(d: string) {
 
@@ -30,13 +28,13 @@ export default function Tile( { url, date, thumbnailUrl }: Props ) {
         return <div className={style.date}>{day} {month} {year}</div>;
     }
 
-    useEffect(() => console.log(isLoaded), [isLoaded]);
+    // useEffect(() => console.log(isLoaded), [isLoaded]);
 
     const style = {
         wrapper: css`
             display: flex;
             position: relative;
-            background-image: url("${url}");
+            background-image: url("${thumbnailUrl ? thumbnailUrl : url}");
             background-size: 150px;
             background-repeat: no-repeat;
             background-size: cover;
@@ -72,6 +70,11 @@ export default function Tile( { url, date, thumbnailUrl }: Props ) {
         `,
         img: css`
             display: none;
+        `,
+        loadingPlaceholder: css`
+            background-color: red;
+            height: 150px;
+            flex-grow: 1;
         `
     };
 
@@ -79,10 +82,12 @@ export default function Tile( { url, date, thumbnailUrl }: Props ) {
         <Link to={`/${date}`} className={style.wrapper}>
             <img 
                 className={style.img}
-                src={url}
-                onLoad={() => setIsLoaded(true)}/>
+                src={thumbnailUrl ? thumbnailUrl : url}
+                onLoad={() => setIsLoaded(true)}
+                alt="APOD thumbnail"
+            />
             <div className={style.overlay}>{getDisplayDate(date)}</div>
-            {isLoaded ? '' : <h3>Loading</h3>}
+            {isLoaded ? '' : <div className={style.loadingPlaceholder}></div>}
         </Link>
     );
 }

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import Home from '../pages/Home';
@@ -15,6 +15,7 @@ export default function Routes() {
     }
 
     const [apodData, setApodData] = useState<Array<ApodObj>>([]);
+    const [pictureRoutes, setPictureRoutes] = useState<Array<JSX.Element>>();
 
     async function fetchData(startDate: string, endDate: string) {
 
@@ -29,14 +30,16 @@ export default function Routes() {
         }
     }
 
-    const pictureRoutes = apodData ? apodData.map(element => 
-        <Route 
-            exact path={`/${element.date}`}
-            key={element.date}
-        >
-            <Article data={element}/>
-        </Route>
-    ) : '';
+    useEffect(() => {
+        setPictureRoutes(apodData ? apodData.map(element => 
+            <Route 
+                exact path={`/${element.date}`}
+                key={element.date}
+            >
+                <Article data={element}/>
+            </Route>
+        ) : [])
+    }, [apodData]);
 
     return (
         <Switch>
