@@ -25,19 +25,21 @@ export default function Tile( { url, date, thumbnailUrl }: Props ) {
         const month = monthNames[dateObj.getMonth()];
         const year = dateObj.getFullYear();
 
-        return <div className={style.date}>{day} {month}<br/>{year}</div>;
+        return <div className={style.date}>{day} {month} {year}</div>;
     }
 
     const style = {
         wrapper: css`
+            display: flex;
             position: relative;
             background-image: url("${thumbnailUrl ? thumbnailUrl : url}");
             background-size: 150px;
             background-repeat: no-repeat;
             background-size: cover;
-            width: 150px;
+            flex-basis: 200px;
             height: 150px;
             margin: 2px;
+            flex-grow: 1;
         `,
         overlay: css`
             display: flex;
@@ -46,7 +48,7 @@ export default function Tile( { url, date, thumbnailUrl }: Props ) {
             position: absolute;
             left: 0;
             bottom: 0;
-            width: inherit;
+            width: 100%;
             height: inherit;
             vertical-align: center;
             text-decoration: none;
@@ -70,11 +72,9 @@ export default function Tile( { url, date, thumbnailUrl }: Props ) {
     };
 
     return (
-        <Link to={`/${date}`}>
+        <Link to={`/${date}`} className={style.wrapper}>
             <img className={style.img} src={url} onLoad={() => {console.log('arrow'); setIsLoaded(true)}}/>
-            <div className={style.wrapper}>
-                <div className={style.overlay}>{getDisplayDate(date)}</div>
-            </div>
+            <div className={style.overlay}>{getDisplayDate(date)}</div>
         </Link>
     );
 }
