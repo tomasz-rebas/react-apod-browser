@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import Grid from '../pages/Grid';
-import PicturePage from '../pages/PicturePage';
+import Home from '../pages/Home';
+import Article from '../pages/Article';
 import Start from '../pages/Start';
 
 export default function Routes() {
@@ -34,7 +34,7 @@ export default function Routes() {
             exact path={`/${element.date}`}
             key={element.date}
         >
-            <PicturePage data={element}/>
+            <Article data={element}/>
         </Route>
     ) : '';
 
@@ -44,7 +44,7 @@ export default function Routes() {
                 <Start fetchData={fetchData}/>
             </Route>
             <Route exact path="/home">
-                <Grid data={apodData}/>
+                <Home data={apodData}/>
             </Route>
             {pictureRoutes}
         </Switch>
