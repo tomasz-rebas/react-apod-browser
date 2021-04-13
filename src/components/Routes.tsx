@@ -31,7 +31,8 @@ export default function Routes() {
     }
 
     useEffect(() => {
-        setPictureRoutes(apodData ? apodData.map(element => 
+        const isObject = typeof apodData === 'object' && apodData !== null;
+        setPictureRoutes(!isObject ? apodData.map(element => 
             <Route 
                 exact path={`/${element.date}`}
                 key={element.date}

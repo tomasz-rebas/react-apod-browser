@@ -8,14 +8,16 @@ type Props = {
 
 export default function Grid({ data }: Props) {
 
-    const tiles = data.map((element: any) => 
+    const isObject = typeof data === 'object' && data !== null;
+
+    const tiles = !isObject ? data.map((element: any) => 
         <Tile 
             url={element.url}
             date={element.date}
             thumbnailUrl={element.media_type === 'video' ? element.thumbnail_url : null}
             key={element.date}
         />
-    );
+    ) : '';
 
     const style = {
         back: css`
@@ -35,7 +37,7 @@ export default function Grid({ data }: Props) {
                 <h3 className={style.back}>&#60; Choose different date range</h3>
             </Link>
             <div className={style.grid}>
-                {data ? tiles : ''}
+                {tiles}
             </div>
         </div>
     );
