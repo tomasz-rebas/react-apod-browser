@@ -17,6 +17,14 @@ export default function Grid({ data }: Props) {
         />
     ) : '';
 
+    const isObject = typeof data === 'object' && data !== null;
+    const errorMessage = isObject ? 
+        <div>
+            Whoops! The error occured.
+            <br/>
+            Please change your date range and try again.
+        </div> : '';
+
     const style = {
         back: css`
             color: #ddd;
@@ -34,13 +42,10 @@ export default function Grid({ data }: Props) {
             <Link to="/">
                 <h3 className={style.back}>&#60; Choose different date range</h3>
             </Link>
-            {
-                tiles ? 
-                <div className={style.grid}>
-                    {tiles}
-                </div> :
-                <div>Sorry. Error.</div>
-            }
+            <div className={style.grid}>
+                {tiles}
+            </div>
+            {errorMessage}
         </div>
     );
 }
