@@ -8,9 +8,7 @@ type Props = {
 
 export default function Grid({ data }: Props) {
 
-    const isObject = typeof data === 'object' && data !== null;
-
-    const tiles = !isObject ? data.map((element: any) => 
+    const tiles = Array.isArray(data) ? data.map((element: any) => 
         <Tile 
             url={element.url}
             date={element.date}
@@ -36,9 +34,13 @@ export default function Grid({ data }: Props) {
             <Link to="/">
                 <h3 className={style.back}>&#60; Choose different date range</h3>
             </Link>
-            <div className={style.grid}>
-                {tiles}
-            </div>
+            {
+                tiles ? 
+                <div className={style.grid}>
+                    {tiles}
+                </div> :
+                <div>Sorry. Error.</div>
+            }
         </div>
     );
 }
