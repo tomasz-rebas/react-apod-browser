@@ -30,12 +30,12 @@ export default function Tile( { url, date, thumbnailUrl }: Props ) {
 
     const animations = {
         loading: keyframes`
-            from, 50%, to {
-                background-color: blue;
+            from, to {
+                opacity: 0
             }
 
-            25%, 75% {
-                background-color: red;
+            50% {
+                opacity: 1;
             }
         `
     }
@@ -82,10 +82,35 @@ export default function Tile( { url, date, thumbnailUrl }: Props ) {
             display: none;
         `,
         loadingPlaceholder: css`
-            background-color: red;
             height: 150px;
             flex-grow: 1;
-            animation: ${animations.loading} 1s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            span {
+                display: inline-block;
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+                background-color: #ccc;
+                margin-left: 3px;
+                margin-right: 3px;
+            }
+
+            span:nth-child(1) {
+                animation: ${animations.loading} 1.5s ease infinite;
+            }
+            
+            span:nth-child(2) {
+                animation: ${animations.loading} 1.5s ease infinite;
+                animation-delay: 0.3s;
+            }
+
+            span:nth-child(3) {
+                animation: ${animations.loading} 1.5s ease infinite;
+                animation-delay: 0.6s;
+            }
         `
     };
 
@@ -98,7 +123,15 @@ export default function Tile( { url, date, thumbnailUrl }: Props ) {
                 alt="APOD thumbnail"
             />
             <div className={style.overlay}>{getDisplayDate(date)}</div>
-            {isLoaded ? '' : <div className={style.loadingPlaceholder}></div>}
+            {
+                isLoaded ?
+                '' : 
+                <div className={style.loadingPlaceholder}>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            }
         </Link>
     );
 }
