@@ -16,6 +16,7 @@ export default function Routes() {
 
     const [apodData, setApodData] = useState<Array<ApodObj>>([]);
     const [pictureRoutes, setPictureRoutes] = useState<Array<JSX.Element>>();
+    const [fetchError, setFetchError] = useState<any>();
 
     async function fetchData(startDate: string, endDate: string) {
 
@@ -27,6 +28,7 @@ export default function Routes() {
             setApodData(data);
         } catch (e) {
             console.error('The error occured. ' + e);
+            setFetchError('' + e);
         }
     }
 
@@ -47,7 +49,7 @@ export default function Routes() {
                 <Start fetchData={fetchData}/>
             </Route>
             <Route exact path="/home">
-                <Home data={apodData}/>
+                <Home data={apodData} fetchError={fetchError}/>
             </Route>
             {pictureRoutes}
         </Switch>

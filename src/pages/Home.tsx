@@ -3,10 +3,11 @@ import Tile from '../components/Tile';
 import { Link } from 'react-router-dom';
 
 type Props = {
-    data: Array<{[key: string]: string}>
+    data: Array<{[key: string]: string}>,
+    fetchError: any
 }
 
-export default function Grid({ data }: Props) {
+export default function Grid({ data, fetchError }: Props) {
 
     const tiles = Array.isArray(data) ? data.map((element: any) => 
         <Tile 
@@ -16,14 +17,6 @@ export default function Grid({ data }: Props) {
             key={element.date}
         />
     ) : '';
-
-    const isObject = typeof data === 'object' && data !== null;
-    const errorMessage = isObject ? 
-        <div>
-            Whoops! The error occured.
-            <br/>
-            Please change your date range and try again.
-        </div> : '';
 
     const style = {
         back: css`
@@ -45,7 +38,16 @@ export default function Grid({ data }: Props) {
             <div className={style.grid}>
                 {tiles}
             </div>
-            {errorMessage}
+            {
+                fetchError ? 
+                <div>
+                    Whoops! The error occured.
+                    <br/>
+                    {fetchError}
+                    <br/>
+                    Please change your date range and try again.
+                </div> : ''
+            }
         </div>
     );
 }
