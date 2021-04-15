@@ -1,4 +1,4 @@
-import { css } from '@emotion/css';
+import { css, keyframes } from '@emotion/css';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
@@ -28,7 +28,17 @@ export default function Tile( { url, date, thumbnailUrl }: Props ) {
         return <div className={style.date}>{day} {month} {year}</div>;
     }
 
-    // useEffect(() => console.log(isLoaded), [isLoaded]);
+    const animations = {
+        loading: keyframes`
+            from, 50%, to {
+                background-color: blue;
+            }
+
+            25%, 75% {
+                background-color: red;
+            }
+        `
+    }
 
     const style = {
         wrapper: css`
@@ -75,6 +85,7 @@ export default function Tile( { url, date, thumbnailUrl }: Props ) {
             background-color: red;
             height: 150px;
             flex-grow: 1;
+            animation: ${animations.loading} 1s ease infinite;
         `
     };
 
