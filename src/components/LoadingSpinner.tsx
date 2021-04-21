@@ -3,7 +3,7 @@ import { css, keyframes } from '@emotion/css';
 export default function LoadingSpinner() {
 
     const animations = {
-        circleRotation: keyframes`
+        rotationClockwise: keyframes`
             from {
                 transform: translate(-50%, -50%) rotate(0deg);
             }
@@ -14,6 +14,19 @@ export default function LoadingSpinner() {
 
             to {
                 transform: translate(-50%, -50%) rotate(359deg);
+            }
+        `,
+        rotationCounterClockwise: keyframes`
+            from {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) rotate(-180deg);
+            }
+
+            to {
+                transform: translate(-50%, -50%) rotate(-359deg);
             }
         `
     }
@@ -46,7 +59,7 @@ export default function LoadingSpinner() {
             border-top-color: ${dark};
             border-right-color: ${dark};
             border-bottom-color: ${dark};
-            animation: ${animations.circleRotation} 3s infinite;
+            animation: ${animations.rotationClockwise} 3s infinite linear;
         `,
         midCircle: css`
             width: 240px;
@@ -55,7 +68,7 @@ export default function LoadingSpinner() {
             border-left-color: ${dark};
             border-right-color: ${dark};
             border-bottom-color: ${dark};
-            animation: ${animations.circleRotation} 2.5s infinite;
+            animation: ${animations.rotationCounterClockwise} 2s infinite linear;
         `,
         innerCircle: css`
             width: 180px;
@@ -64,7 +77,7 @@ export default function LoadingSpinner() {
             border-top-color: ${dark};
             border-left-color: ${dark};
             border-bottom-color: ${dark};
-            animation: ${animations.circleRotation} 2s infinite;
+            animation: ${animations.rotationClockwise} 1s infinite linear;
         `
     };
 
