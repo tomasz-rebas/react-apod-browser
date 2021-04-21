@@ -1,6 +1,7 @@
 import { css } from '@emotion/css';
 import Tile from '../components/Tile';
 import { Link } from 'react-router-dom';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 type Props = {
     data: any, /*Array<{[key: string]: string}>*/
@@ -40,7 +41,7 @@ export default function Grid({ data, fetchError }: Props) {
                 <div className={style.grid}>
                     {tiles}
                 </div> :
-                <h1>LOADING SPINNER HERE</h1>
+                <LoadingSpinner/>
             }
             {
                 fetchError ? 
