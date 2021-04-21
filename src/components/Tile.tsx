@@ -2,6 +2,7 @@ import { css } from '@emotion/css';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import LoadingDots from './LoadingDots';
+import MediaPlaceholder from './MediaPlaceholder';
 
 type Props = {
     url: string,
@@ -74,12 +75,16 @@ export default function Tile( { url, date, thumbnailUrl }: Props ) {
 
     return (
         <Link to={`/${date}`} className={style.wrapper}>
-            <img 
-                className={style.img}
-                src={thumbnailUrl ? thumbnailUrl : url}
-                onLoad={() => setIsLoaded(true)}
-                alt="APOD thumbnail"
-            />
+            {
+                thumbnailUrl === '' ?
+                <MediaPlaceholder/> :
+                <img 
+                    className={style.img}
+                    src={thumbnailUrl ? thumbnailUrl : url}
+                    onLoad={() => setIsLoaded(true)}
+                    alt="APOD thumbnail"
+                />
+            }
             <div className={style.overlay}>{getDisplayDate(date)}</div>
             {isLoaded ? '' : <LoadingDots/>}
         </Link>
