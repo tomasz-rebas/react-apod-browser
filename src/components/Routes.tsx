@@ -7,18 +7,20 @@ import Start from '../pages/Start';
 
 export default function Routes() {
 
-    type ApodObj = {
-        url: string,
-        date: string,
-        media_type: string,
-        [key: string]: string
-    }
+    // type ApodObj = {
+    //     url: string,
+    //     date: string,
+    //     media_type: string,
+    //     [key: string]: string
+    // }
 
-    const [apodData, setApodData] = useState<Array<ApodObj>>([]);
+    const [apodData, setApodData] = useState<any>(null);
     const [pictureRoutes, setPictureRoutes] = useState<Array<JSX.Element>>();
     const [fetchError, setFetchError] = useState<any>();
 
     async function fetchData(startDate: string, endDate: string) {
+
+        setApodData(null);
 
         const url = `https://api.nasa.gov/planetary/apod?api_key=wAdeucxqcxW23cUydKnHI5YGEbljt8aVE4NP0Y3L&start_date=${startDate}&end_date=${endDate}&thumbs=true`;
 
@@ -26,6 +28,7 @@ export default function Routes() {
             const response = await fetch(url);
             const data = await response.json();
             setApodData(data);
+            console.log(apodData);
         } catch (e) {
             console.error('The error occured. ' + e);
             setFetchError('' + e);
