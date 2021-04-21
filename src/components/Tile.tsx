@@ -1,6 +1,7 @@
-import { css, keyframes } from '@emotion/css';
+import { css } from '@emotion/css';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import LoadingDots from './LoadingDots';
 
 type Props = {
     url: string,
@@ -26,18 +27,6 @@ export default function Tile( { url, date, thumbnailUrl }: Props ) {
         const year = dateObj.getFullYear();
 
         return <div className={style.date}>{day} {month} {year}</div>;
-    }
-
-    const animations = {
-        loading: keyframes`
-            from, to {
-                opacity: 0
-            }
-
-            50% {
-                opacity: 1;
-            }
-        `
     }
 
     const style = {
@@ -80,37 +69,6 @@ export default function Tile( { url, date, thumbnailUrl }: Props ) {
         `,
         img: css`
             display: none;
-        `,
-        loadingPlaceholder: css`
-            height: 150px;
-            flex-grow: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            span {
-                display: inline-block;
-                width: 15px;
-                height: 15px;
-                border-radius: 50%;
-                background-color: #ccc;
-                margin-left: 3px;
-                margin-right: 3px;
-            }
-
-            span:nth-child(1) {
-                animation: ${animations.loading} 1.5s ease infinite;
-            }
-            
-            span:nth-child(2) {
-                animation: ${animations.loading} 1.5s ease infinite;
-                animation-delay: 0.3s;
-            }
-
-            span:nth-child(3) {
-                animation: ${animations.loading} 1.5s ease infinite;
-                animation-delay: 0.6s;
-            }
         `
     };
 
@@ -123,15 +81,7 @@ export default function Tile( { url, date, thumbnailUrl }: Props ) {
                 alt="APOD thumbnail"
             />
             <div className={style.overlay}>{getDisplayDate(date)}</div>
-            {
-                isLoaded ?
-                '' : 
-                <div className={style.loadingPlaceholder}>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            }
+            {isLoaded ? '' : <LoadingDots/>}
         </Link>
     );
 }
