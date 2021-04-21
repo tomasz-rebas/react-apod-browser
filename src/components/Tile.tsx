@@ -75,18 +75,18 @@ export default function Tile( { url, date, thumbnailUrl }: Props ) {
 
     return (
         <Link to={`/${date}`} className={style.wrapper}>
+            <img 
+                className={style.img}
+                src={thumbnailUrl ? thumbnailUrl : url}
+                onLoad={() => setIsLoaded(true)}
+                alt="APOD thumbnail"
+            />
+            <div className={style.overlay}>{getDisplayDate(date)}</div>
             {
                 thumbnailUrl === '' ?
                 <MediaPlaceholder/> :
-                <img 
-                    className={style.img}
-                    src={thumbnailUrl ? thumbnailUrl : url}
-                    onLoad={() => setIsLoaded(true)}
-                    alt="APOD thumbnail"
-                />
+                (isLoaded ? '' : <LoadingDots/>)
             }
-            <div className={style.overlay}>{getDisplayDate(date)}</div>
-            {isLoaded ? '' : <LoadingDots/>}
         </Link>
     );
 }
