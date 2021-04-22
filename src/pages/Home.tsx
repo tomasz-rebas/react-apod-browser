@@ -9,7 +9,7 @@ type Props = {
     fetchError: any
 }
 
-export default function Grid({ data, fetchError }: Props) {
+export default function Home({ data, fetchError }: Props) {
 
     const tiles = Array.isArray(data) ? data.map((element: any) => 
         <Tile 
