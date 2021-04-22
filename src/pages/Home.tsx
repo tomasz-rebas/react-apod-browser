@@ -6,7 +6,7 @@ import FetchError from '../components/FetchError';
 
 type Props = {
     data: any, /*Array<{[key: string]: string}>*/
-    fetchError: any
+    fetchError: string
 }
 
 export default function Home({ data, fetchError }: Props) {
@@ -38,7 +38,7 @@ export default function Home({ data, fetchError }: Props) {
                 <h3 className={style.back}>&#60; Choose different date range</h3>
             </Link>
             {
-                fetchError ? 
+                fetchError !== '' ? 
                 <FetchError fetchError={fetchError}/> :
                 data ?
                 <div className={style.grid}>

@@ -16,7 +16,7 @@ export default function Routes() {
 
     const [apodData, setApodData] = useState<any>(null);
     const [pictureRoutes, setPictureRoutes] = useState<Array<JSX.Element>>();
-    const [fetchError, setFetchError] = useState<any>();
+    const [fetchError, setFetchError] = useState<string>('');
 
     async function fetchData(startDate: string, endDate: string) {
 
@@ -25,6 +25,7 @@ export default function Routes() {
         const url = `https://api.nasa.gov/planetary/apod?api_key=wAdeucxqcxW23cUydKnHI5YGEbljt8aVE4NP0Y3L&start_date=${startDate}&end_date=${endDate}&thumbs=true`;
 
         try {
+            console.log(`Fetching data for: ${startDate} to ${endDate}...`);
             const response = await fetch(url);
             const data = await response.json();
             setApodData(data);

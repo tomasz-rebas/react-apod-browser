@@ -6,11 +6,10 @@ type Props = {
 }
 
 export default function FetchError({ fetchError }: Props) {    
-    
-    const badSound = new Audio(process.env.PUBLIC_URL + 'bad.mp3');
-    badSound.volume = 0.1;
 
-    useEffect(() => {
+    useEffect(() => {  
+        const badSound = new Audio(process.env.PUBLIC_URL + 'bad.mp3');
+        badSound.volume = 0.1;
         badSound.play()
     }, []);
 
@@ -30,6 +29,7 @@ export default function FetchError({ fetchError }: Props) {
             <img 
                 src={process.env.PUBLIC_URL + 'face.png'}
                 className={style.image}
+                alt="Face"
             />
             <div>
                 <h2>Whoops!</h2> 
