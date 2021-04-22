@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import LoadingDots from './LoadingDots';
 import MediaPlaceholder from './MediaPlaceholder';
-import getDisplayDate from '../functions/getDisplayDate';
+import getDateString from '../functions/getDateString';
 
 type Props = {
     url: string,
@@ -68,7 +68,7 @@ export default function Tile( { url, date, thumbnailUrl }: Props ) {
             />
             <div className={style.overlay}>
                 <div className={style.date}>
-                    {getDisplayDate(date)}
+                    {getDateString(date, 'D Mon Yr')}
                 </div>
             </div>
             {

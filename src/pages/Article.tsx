@@ -1,5 +1,6 @@
 import { css } from '@emotion/css';
 import { Link } from 'react-router-dom';
+import getDateString from '../functions/getDateString';
 
 type Props = {
     data: {
@@ -8,23 +9,6 @@ type Props = {
 }
 
 export default function PicturePage({ data }: Props) {
-
-    function getDisplayDate(d: string) {
-
-        const dateObj = new Date(d);
-
-        const monthNames = [
-            "January", "February", "March", "April", 
-            "May", "June", "July", "August", "September", 
-            "October", "November", "December"
-        ];
-
-        const day = dateObj.getDate();
-        const month = monthNames[dateObj.getMonth()];
-        const year = dateObj.getFullYear();
-
-        return `${day} ${month} ${year}`;
-    }
 
     const style = {
         wrapper: css`
@@ -65,8 +49,12 @@ export default function PicturePage({ data }: Props) {
             </Link>
             <div className={style.wrapper}>   
                 <main className={style.main}>
-                    <h1 className={style.header}>{data.title}</h1>
-                    <h3 className={style.header}>{getDisplayDate(data.date)}</h3>
+                    <h1 className={style.header}>
+                        {data.title}
+                    </h1>
+                    <h3 className={style.header}>
+                        {getDateString(data.date, 'D Month Yr')}
+                    </h3>
                     {
                         data.media_type === 'image' ?
                         <img 

@@ -6,6 +6,7 @@ import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import { DateRangePicker } from 'react-date-range';
 import { addDays } from 'date-fns';
+import getDateString from '../functions/getDateString';
 
 type Props = {
     fetchData: Function
@@ -21,16 +22,9 @@ export default function Start({ fetchData }: Props) {
         }
     ]);
 
-    function getQueryDate(dateObj: Date) {
-        const day = ('0' + dateObj.getDate()).slice(-2);
-        const month = ('0' + (dateObj.getMonth() + 1)).slice(-2);
-        const year = dateObj.getFullYear();
-        return `${year}-${month}-${day}`;
-    }
-
     function handleClick() {
-        const startDate = getQueryDate(inputDateRanges[0].startDate);
-        const endDate = getQueryDate(inputDateRanges[0].endDate);
+        const startDate = getDateString(inputDateRanges[0].startDate, 'YYYY-MM-DD');
+        const endDate = getDateString(inputDateRanges[0].endDate, 'YYYY-MM-DD');
         fetchData(startDate, endDate);
     }
 
