@@ -5,10 +5,23 @@ export default function LoadingDots() {
     const animations = {
         loading: keyframes`
             from, to {
-                opacity: 0
+                opacity: 0;
             }
 
             50% {
+                opacity: 1;
+            }
+        `,
+        fadeIn: keyframes`
+            from {
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0
+            }
+
+            to {
                 opacity: 1;
             }
         `
@@ -31,6 +44,8 @@ export default function LoadingDots() {
                 margin-left: 3px;
                 margin-right: 3px;
             }
+
+            animation: ${animations.fadeIn} 1s ease;
 
             span:nth-child(1) {
                 animation: ${animations.loading} 1.5s ease infinite;
