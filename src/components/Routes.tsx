@@ -28,6 +28,9 @@ export default function Routes() {
 
     async function fetchData(startDate: string, endDate: string) {
 
+        // startDate = '2012-11-18';
+        // endDate = '2013-01-19';
+
         setApodData(null);
 
         const url = `https://api.nasa.gov/planetary/apod?api_key=wAdeucxqcxW23cUydKnHI5YGEbljt8aVE4NP0Y3L&start_date=${startDate}&end_date=${endDate}&thumbs=true`;
@@ -36,7 +39,21 @@ export default function Routes() {
             console.log(`Fetching data for: ${startDate} to ${endDate}...`);
             const response = await fetch(url);
             const data = await response.json();
-            setApodData(data);
+
+            if (Array.isArray(data)) {
+                setApodData(data);
+            } else {
+                if (typeof data === 'object') {
+                    if (('code' in data) && ('msg' in data)) {
+                        setFetchError(`${data.code} - ${data.msg}`);
+                    } else {
+                        setFetchError('Error: unknown');
+                    }
+                } else {
+                    setFetchError('Error: unknown');
+                }
+            }
+
             console.log(apodData);
         } catch (e) {
             console.error('The error occured. ' + e);
