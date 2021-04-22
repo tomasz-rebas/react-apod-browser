@@ -14,6 +14,14 @@ export default function Routes() {
     //     [key: string]: string
     // }
 
+    /*
+
+    There's an error for this range:
+
+    2013-01-17 --- 2013-06-19
+
+    */
+
     const [apodData, setApodData] = useState<any>(null);
     const [pictureRoutes, setPictureRoutes] = useState<Array<JSX.Element>>();
     const [fetchError, setFetchError] = useState<string>('');

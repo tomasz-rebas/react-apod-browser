@@ -1,6 +1,7 @@
 import { css } from '@emotion/css';
 import { Link } from 'react-router-dom';
 import getDateString from '../functions/getDateString';
+import { useEffect } from 'react';
 
 type Props = {
     data: {
@@ -9,6 +10,10 @@ type Props = {
 }
 
 export default function PicturePage({ data }: Props) {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     const style = {
         wrapper: css`
