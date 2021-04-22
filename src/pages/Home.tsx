@@ -2,6 +2,7 @@ import { css } from '@emotion/css';
 import Tile from '../components/Tile';
 import { Link } from 'react-router-dom';
 import LoadingSpinner from '../components/LoadingSpinner';
+import FetchError from '../components/FetchError';
 
 type Props = {
     data: any, /*Array<{[key: string]: string}>*/
@@ -37,21 +38,13 @@ export default function Grid({ data, fetchError }: Props) {
                 <h3 className={style.back}>&#60; Choose different date range</h3>
             </Link>
             {
-                data ?       
+                fetchError ? 
+                <FetchError fetchError={fetchError}/> :
+                data ?
                 <div className={style.grid}>
                     {tiles}
                 </div> :
                 <LoadingSpinner/>
-            }
-            {
-                fetchError ? 
-                <div>
-                    Whoops! The error occured.
-                    <br/>
-                    {fetchError}
-                    <br/>
-                    Please change your date range and try again.
-                </div> : ''
             }
         </div>
     );
