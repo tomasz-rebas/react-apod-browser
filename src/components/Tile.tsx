@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import LoadingDots from './LoadingDots';
 import MediaPlaceholder from './MediaPlaceholder';
+import getDisplayDate from '../functions/getDisplayDate';
 
 type Props = {
     url: string,
@@ -13,22 +14,6 @@ type Props = {
 export default function Tile( { url, date, thumbnailUrl }: Props ) {
 
     const [isLoaded, setIsLoaded] = useState(false);
-
-    function getDisplayDate(d: string) {
-
-        const dateObj = new Date(d);
-
-        const monthNames = [
-            "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-        ];
-
-        const day = dateObj.getDate();
-        const month = monthNames[dateObj.getMonth()];
-        const year = dateObj.getFullYear();
-
-        return <div className={style.date}>{day} {month} {year}</div>;
-    }
 
     const style = {
         wrapper: css`
@@ -81,7 +66,11 @@ export default function Tile( { url, date, thumbnailUrl }: Props ) {
                 onLoad={() => setIsLoaded(true)}
                 alt="APOD thumbnail"
             />
-            <div className={style.overlay}>{getDisplayDate(date)}</div>
+            <div className={style.overlay}>
+                <div className={style.date}>
+                    {getDisplayDate(date)}
+                </div>
+            </div>
             {
                 thumbnailUrl === '' ?
                 <MediaPlaceholder/> :
