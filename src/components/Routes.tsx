@@ -62,13 +62,30 @@ export default function Routes() {
     }
 
     useEffect(() => {
-        setPictureRoutes(Array.isArray(apodData) ? apodData.map(element => 
-            <Route 
-                exact path={`/${element.date}`}
-                key={element.date}
-            >
-                <Article data={element}/>
-            </Route>
+        setPictureRoutes(
+            Array.isArray(apodData) ? 
+            apodData.map((element, index, array) => {
+
+                const isLastElement = index === array.length - 1;
+                const isFirstElement = index === 0;
+
+                const adjacentArticles = {
+                    previous: isFirstElement ? null : array[index - 1].date,
+                    next: isLastElement ? null : array[index + 1].date
+                }
+
+                return (
+                    <Route 
+                        exact path={`/${element.date}`}
+                        key={element.date}
+                    >
+                        <Article 
+                            data={element}
+                            adjacentArticles={adjacentArticles}
+                        />
+                    </Route>
+                );
+            }
         ) : [])
     }, [apodData]);
 

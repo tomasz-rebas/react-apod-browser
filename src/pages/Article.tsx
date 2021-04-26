@@ -6,10 +6,14 @@ import { useEffect } from 'react';
 type Props = {
     data: {
         [key: string]: string
+    },
+    adjacentArticles: {
+        previous: string | null,
+        next: string | null
     }
 }
 
-export default function PicturePage({ data }: Props) {
+export default function PicturePage({ data, adjacentArticles }: Props) {
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -29,9 +33,16 @@ export default function PicturePage({ data }: Props) {
         header: css`
             text-align: center;
         `,
-        back: css`
-            color: #ddd;
+        link: css`
+            color: #333;
             margin-left: 15px;
+            margin-right: 15px;
+            width: 100px;
+            text-align: center;
+            text-decoration: none;
+            &:visited {
+                color: #333;
+            }
         ;`,
         picture: css`
             object-fit: contain;
@@ -60,14 +71,36 @@ export default function PicturePage({ data }: Props) {
         p: css`
             text-align: justify;
             font-size: 1.2em;
+        `,
+        navigation: css`
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            background-color: #ddd;
         `
     };
 
     return (
         <div>
-            <Link to="/home">
-                <h3 className={style.back}>&#60; Back</h3>
-            </Link>
+            <nav className={style.navigation}>
+                {
+                    adjacentArticles.previous ?
+                    <Link to={`/${adjacentArticles.previous}`} className={style.link}>
+                        <h3>&#60; Previous</h3>
+                    </Link> :
+                    <div className={style.link}></div>
+                }
+                <Link to="/home" className={style.link}>
+                    <h3>Homepage</h3>
+                </Link>
+                {
+                    adjacentArticles.next ?
+                    <Link to={`/${adjacentArticles.next}`} className={style.link}>
+                        <h3>Next &#62;</h3>
+                    </Link> :
+                    <div className={style.link}></div>
+                }
+            </nav>
             <div className={style.wrapper}>   
                 <main className={style.main}>
                     <h1 className={style.header}>
