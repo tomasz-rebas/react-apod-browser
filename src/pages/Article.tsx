@@ -34,12 +34,28 @@ export default function PicturePage({ data }: Props) {
             margin-left: 15px;
         ;`,
         picture: css`
+            object-fit: contain;
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 100%;
+        `,
+        pictureWrapper: css`
             max-width: inherit;
             max-height: 500px;
-            object-fit: contain;
+            text-align: center;
         `,
         iframeWrapper: css`
             text-align: center;
+        `,
+        iframe: css`
+            width: 560px;
+            height: 315px;
+            
+            @media (max-width: 600px) {
+                width: 300px;
+                height: 240px;
+            }
         `,
         p: css`
             text-align: justify;
@@ -62,16 +78,16 @@ export default function PicturePage({ data }: Props) {
                     </h3>
                     {
                         data.media_type === 'image' ?
-                        <img 
-                            className={style.picture}
-                            src={data.url}
-                            alt="APOD"
-                        /> :
+                        <div className={style.pictureWrapper}>
+                            <img 
+                                className={style.picture}
+                                src={data.url}
+                                alt="APOD"
+                            />
+                        </div> :
                         <div className={style.iframeWrapper}>
                             <iframe 
-                                className=""
-                                width="560"
-                                height="315"
+                                className={style.iframe}
                                 src={data.url}
                                 frameBorder="0"
                                 allow="autoplay; encrypted-media"
