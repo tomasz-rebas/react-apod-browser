@@ -77,6 +77,7 @@ export default function PicturePage({ data, adjacentArticles }: Props) {
             justify-content: space-between;
             flex-wrap: wrap;
             background-color: #ddd;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         `
     };
 
