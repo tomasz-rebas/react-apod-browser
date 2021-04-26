@@ -4,9 +4,13 @@ import { Link } from 'react-router-dom';
 
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
+
 import { DateRangePicker } from 'react-date-range';
+// https://www.npmjs.com/package/react-date-range
+
 import { addDays } from 'date-fns';
 import getDateString from '../functions/getDateString';
+
 
 type Props = {
     fetchData: Function
@@ -66,6 +70,13 @@ export default function Start({ fetchData }: Props) {
             &:hover {
                 background-color: #888;
             };
+        `,
+        dateRangePicker: css`
+            @media (max-width: 600px) {
+                .rdrDefinedRangesWrapper {
+                    display: none;
+                }
+            }
         `
     }
 
@@ -82,6 +93,7 @@ export default function Start({ fetchData }: Props) {
                 In case you're not familiar with Astronomy Picture of the Day go check it out <a href="https://apod.nasa.gov/apod/astropix.html">here</a>.
             </p>
             <DateRangePicker
+                className={style.dateRangePicker}
                 ranges={inputDateRanges}
                 months={2}
                 direction="vertical"
