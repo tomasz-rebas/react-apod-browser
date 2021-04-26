@@ -22,10 +22,28 @@ export default function Start({ fetchData }: Props) {
         }
     ]);
 
+    function handleChange(item: any) {
+
+        const {startDate, endDate} = item.selection;
+
+        const diffMs = Math.abs(endDate - startDate);
+        const diffDays = Math.ceil(diffMs / (1000 * 60 * 60 *24));
+
+        if (diffDays > 365) {
+            alert("Please select a range that doesn't exceed one year");
+        } else {
+            setInputDateRanges([item.selection])
+        }
+    }
+
     function handleClick() {
-        const startDate = getDateString(inputDateRanges[0].startDate, 'YYYY-MM-DD');
-        const endDate = getDateString(inputDateRanges[0].endDate, 'YYYY-MM-DD');
-        fetchData(startDate, endDate);
+
+        const {startDate, endDate} = inputDateRanges[0];
+
+        const startDateString = getDateString(startDate, 'YYYY-MM-DD');
+        const endDateString = getDateString(endDate, 'YYYY-MM-DD');
+
+        fetchData(startDateString, endDateString);
     }
 
     const style = {
@@ -69,7 +87,7 @@ export default function Start({ fetchData }: Props) {
                 direction="vertical"
                 showSelectionPreview={true}
                 moveRangeOnFirstSelection={false}
-                onChange={(item: any) => setInputDateRanges([item.selection])}
+                onChange={handleChange}
                 minDate={new Date('January 16, 1995 00:00:00')}
                 maxDate={new Date()}
                 shownDate={addDays(new Date(), -30)}
