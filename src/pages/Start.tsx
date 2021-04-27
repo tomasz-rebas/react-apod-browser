@@ -51,6 +51,9 @@ export default function Start({ fetchData }: Props) {
     }
 
     const style = {
+        link: css`
+            color: #ddd;
+        `,
         wrapper: css`
             text-align: center;
         `,
@@ -90,7 +93,7 @@ export default function Start({ fetchData }: Props) {
                 Select your desired time and click Continue.
                 <br/>
                 <br/>
-                In case you're not familiar with Astronomy Picture of the Day go check it out <a href="https://apod.nasa.gov/apod/astropix.html">here</a>.
+                In case you're not familiar with Astronomy Picture of the Day go check it out <a className={style.link} href="https://apod.nasa.gov/apod/astropix.html" target="_blank">here</a>.
             </p>
             <DateRangePicker
                 className={style.dateRangePicker}
