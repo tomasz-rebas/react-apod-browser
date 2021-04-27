@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, useHistory } from 'react-router-dom';
 
 import Home from '../pages/Home';
 import Article from '../pages/Article';
@@ -14,17 +14,13 @@ export default function Routes() {
     //     [key: string]: string
     // }
 
-    /*
-
-    There's an error for this range:
-
-    2013-01-17 --- 2013-06-19
-
-    */
+    /* There's an error for this range: 2013/01/17 - 2013/06/19 */
 
     const [apodData, setApodData] = useState<any>(null);
     const [pictureRoutes, setPictureRoutes] = useState<Array<JSX.Element>>();
     const [fetchError, setFetchError] = useState<string>('');
+
+    let history = useHistory();
 
     async function fetchData(startDate: string, endDate: string) {
 
@@ -60,6 +56,10 @@ export default function Routes() {
             setFetchError('' + e);
         }
     }
+
+    useEffect(() => {
+        history.push('/');
+    }, [history]);
 
     useEffect(() => {
         setPictureRoutes(
