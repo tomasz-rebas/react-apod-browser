@@ -28,6 +28,7 @@ export default function Routes() {
         // endDate = '2013-01-19';
 
         setApodData(null);
+        setFetchError('');
 
         const url = `https://api.nasa.gov/planetary/apod?api_key=wAdeucxqcxW23cUydKnHI5YGEbljt8aVE4NP0Y3L&start_date=${startDate}&end_date=${endDate}&thumbs=true`;
 
@@ -49,8 +50,6 @@ export default function Routes() {
                     setFetchError('Error: unknown');
                 }
             }
-
-            console.log(apodData);
         } catch (e) {
             console.error('The error occured. ' + e);
             setFetchError('' + e);
