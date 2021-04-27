@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Switch, Route, useHistory } from 'react-router-dom';
 
 import Home from '../pages/Home';
 import Article from '../pages/Article';
 import Start from '../pages/Start';
+
+export const ThemeContext = React.createContext<any>(undefined);
 
 export default function Routes() {
 
@@ -19,6 +21,7 @@ export default function Routes() {
     const [apodData, setApodData] = useState<any>(null);
     const [pictureRoutes, setPictureRoutes] = useState<Array<JSX.Element>>();
     const [fetchError, setFetchError] = useState<string>('');
+    const [darkMode, setDarkMode] = useState<boolean>(true);
 
     let history = useHistory();
 
@@ -89,14 +92,16 @@ export default function Routes() {
     }, [apodData]);
 
     return (
-        <Switch>
-            <Route exact path="/">
-                <Start fetchData={fetchData}/>
-            </Route>
-            <Route exact path="/home">
-                <Home data={apodData} fetchError={fetchError}/>
-            </Route>
-            {pictureRoutes}
-        </Switch>
+        <ThemeContext.Provider value={[darkMode, setDarkMode]}>
+            <Switch>
+                <Route exact path="/">
+                    <Start fetchData={fetchData}/>
+                </Route>
+                <Route exact path="/home">
+                    <Home data={apodData} fetchError={fetchError}/>
+                </Route>
+                {pictureRoutes}
+            </Switch>
+        </ThemeContext.Provider>
     );
 }
