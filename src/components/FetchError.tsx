@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
 import { css } from '@emotion/css';
+import SadEmoji from './SadEmoji';
 
 type Props = {
     fetchError: string
@@ -7,30 +7,16 @@ type Props = {
 
 export default function FetchError({ fetchError }: Props) {    
 
-    useEffect(() => {  
-        const badSound = new Audio(process.env.PUBLIC_URL + 'bad.mp3');
-        badSound.volume = 0.1;
-        badSound.play()
-    }, []);
-
     const style = {
         wrapper: css`
             display: flex;
             justify-content: center;
-        `,
-        image: css`
-            width: 180px;
-            height: 180px;
         `
     }
 
     return (
         <div className={style.wrapper}>
-            <img 
-                src={process.env.PUBLIC_URL + 'face.png'}
-                className={style.image}
-                alt="Face"
-            />
+            <SadEmoji/>
             <div>
                 <h2>Whoops!</h2> 
                 <h3>Something went wrong.</h3>
