@@ -83,17 +83,26 @@ export default function Start({ fetchData }: Props) {
         `
     }
 
+    const apodLink = <a 
+        className={style.link}
+        href="https://apod.nasa.gov/apod/astropix.html"
+        target="_blank">
+            here
+    </a>;
+
     return (
         <div className={style.wrapper}>
             <h3>Welcome to</h3>
             <h1>Astronomy Picture of the Day Browser</h1>
             <p>
-                The browser will display a list of Astronomy Pictures of the Day from NASA's archive based on your selected time.
+                The browser will display a list of Astronomy Pictures 
+                of the Day from NASA's archive based on your selected time.
                 <br/>
                 Select your desired time and click Continue.
                 <br/>
                 <br/>
-                In case you're not familiar with Astronomy Picture of the Day go check it out <a className={style.link} href="https://apod.nasa.gov/apod/astropix.html" target="_blank">here</a>.
+                In case you're not familiar with Astronomy Picture 
+                of the Day go check it out {apodLink}.
             </p>
             <DateRangePicker
                 className={style.dateRangePicker}
