@@ -25,7 +25,7 @@ export default function DarkModeSwitch({ setDarkMode }: Props) {
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: #ccc;
+            background-color: ${darkMode ? `#666` : `#aaa`};
             -webkit-transition: .4s;
             transition: .4s;
             border-radius: 34px;
@@ -36,7 +36,7 @@ export default function DarkModeSwitch({ setDarkMode }: Props) {
                 width: 26px;
                 left: 4px;
                 bottom: 4px;
-                background-color: white;
+                background-color: ${darkMode ? `#ddd` : `#333`};
                 -webkit-transition: .4s;
                 transition: .4s;
                 border-radius: 50%;
@@ -47,7 +47,7 @@ export default function DarkModeSwitch({ setDarkMode }: Props) {
             }
         `,
         input: css`
-            
+            visibility: hidden;
         `
     }
 
