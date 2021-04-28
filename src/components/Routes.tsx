@@ -5,7 +5,9 @@ import Home from '../pages/Home';
 import Article from '../pages/Article';
 import Start from '../pages/Start';
 
-export const ThemeContext = React.createContext<any>(undefined);
+import { Global, css } from '@emotion/react';
+
+export const ThemeContext = React.createContext<boolean>(true);
 
 export default function Routes() {
 
@@ -92,13 +94,30 @@ export default function Routes() {
     }, [apodData]);
 
     return (
-        <ThemeContext.Provider value={[darkMode, setDarkMode]}>
+        <ThemeContext.Provider value={darkMode}>
+            <Global
+                styles={css`
+                    body {
+                        font-family: 'Blinker', sans-serif;
+                        background-color: ${darkMode ? `#333` : `#ddd`};
+                        color: ${darkMode ? `#ddd` : `#333`};
+                        margin: 0;
+                    }
+                `}
+            />
             <Switch>
                 <Route exact path="/">
-                    <Start fetchData={fetchData}/>
+                    <Start 
+                        fetchData={fetchData}
+                        setDarkMode={setDarkMode}
+                    />
                 </Route>
                 <Route exact path="/home">
-                    <Home data={apodData} fetchError={fetchError}/>
+                    <Home
+                        data={apodData}
+                        fetchError={fetchError}
+                        setDarkMode={setDarkMode}
+                    />
                 </Route>
                 {pictureRoutes}
             </Switch>

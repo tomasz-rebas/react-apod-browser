@@ -1,5 +1,5 @@
 import { css } from '@emotion/css';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import 'react-date-range/dist/styles.css';
@@ -10,13 +10,16 @@ import { DateRangePicker } from 'react-date-range';
 
 import { addDays } from 'date-fns';
 import getDateString from '../functions/getDateString';
+import { ThemeContext } from '../components/Routes';
+import DarkModeSwitch from '../components/DarkModeSwitch';
 
 
 type Props = {
-    fetchData: Function
+    fetchData: Function,
+    setDarkMode: Function
 }
 
-export default function Start({ fetchData }: Props) {    
+export default function Start({ fetchData, setDarkMode }: Props) {  
 
     const [inputDateRanges, setInputDateRanges] = useState<any>([
         {
@@ -25,6 +28,10 @@ export default function Start({ fetchData }: Props) {
             key: 'selection',
         }
     ]);
+
+    const darkMode = useContext(ThemeContext);
+    
+    console.log(darkMode);
 
     function handleChange(item: any) {
 
@@ -51,8 +58,17 @@ export default function Start({ fetchData }: Props) {
     }
 
     const style = {
+        navigation: css`
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            flex-wrap: wrap;
+            background-color: ${darkMode ? `#ddd` : `#333`};
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            height: 60px;
+        `,
         link: css`
-            color: #ddd;
+            color: ${darkMode ? `#ddd` : `#333`};
         `,
         wrapper: css`
             text-align: center;
@@ -67,8 +83,8 @@ export default function Start({ fetchData }: Props) {
             font-size: 1.2em;
             border: none;
             border-radius: 3px;
-            color: #ddd;
-            background-color: #555;
+            color: ${darkMode ? `#ddd` : `#333`};
+            background-color: ${darkMode ? `#555` : `#bbb`};
             cursor: pointer;
             &:hover {
                 background-color: #888;
@@ -92,6 +108,10 @@ export default function Start({ fetchData }: Props) {
 
     return (
         <div className={style.wrapper}>
+            <nav className={style.navigation}>
+                <h3></h3>
+                <DarkModeSwitch setDarkMode={setDarkMode}/>
+            </nav>
             <h3>Welcome to</h3>
             <h1>Astronomy Picture of the Day Browser</h1>
             <p>

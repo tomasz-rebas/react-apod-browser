@@ -1,7 +1,8 @@
 import { css } from '@emotion/css';
 import { Link } from 'react-router-dom';
 import getDateString from '../functions/getDateString';
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
+import { ThemeContext } from '../components/Routes';
 
 type Props = {
     data: {
@@ -14,6 +15,8 @@ type Props = {
 }
 
 export default function PicturePage({ data, adjacentArticles }: Props) {
+
+    const darkMode = useContext(ThemeContext);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -34,14 +37,14 @@ export default function PicturePage({ data, adjacentArticles }: Props) {
             text-align: center;
         `,
         link: css`
-            color: #333;
+            color: ${darkMode ? `#333` : `#ddd`};
             margin-left: 15px;
             margin-right: 15px;
             width: 100px;
             text-align: center;
             text-decoration: none;
             &:visited {
-                color: #333;
+                color: ${darkMode ? `#333` : `#ddd`};
             }
         ;`,
         picture: css`
@@ -76,8 +79,9 @@ export default function PicturePage({ data, adjacentArticles }: Props) {
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
-            background-color: #ddd;
+            background-color: ${darkMode ? `#ddd` : `#333`};
             box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            height: 60px;
         `
     };
 
