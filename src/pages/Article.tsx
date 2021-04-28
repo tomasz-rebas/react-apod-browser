@@ -84,6 +84,11 @@ export default function PicturePage({ data, adjacentArticles }: Props) {
             background-color: ${darkMode ? `#ddd` : `#333`};
             box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
             min-height: 60px;
+            
+            @media (max-width: 410px) {
+                flex-direction: column;
+                align-items: center;
+            }
         `
     };
 
