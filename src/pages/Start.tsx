@@ -96,6 +96,10 @@ export default function Start({ fetchData, setDarkMode }: Props) {
                     display: none;
                 }
             }
+        `,
+        textContainer: css`
+            margin-left: 6px;
+            margin-right: 6px;
         `
     }
 
@@ -114,18 +118,20 @@ export default function Start({ fetchData, setDarkMode }: Props) {
             <nav className={style.navigation}>
                 <DarkModeSwitch setDarkMode={setDarkMode}/>
             </nav>
-            <h3>Welcome to</h3>
-            <h1>Astronomy Picture of the Day Browser</h1>
-            <p>
-                The browser will display a list of Astronomy Pictures 
-                of the Day from NASA's archive based on your selected time.
-                <br/>
-                Select your desired time and click Continue.
-                <br/>
-                <br/>
-                In case you're not familiar with Astronomy Picture 
-                of the Day go check it out {apodLink}.
-            </p>
+            <div className={style.textContainer}>
+                <h3>Welcome to</h3>
+                <h1>Astronomy Picture of the Day Browser</h1>
+                <p>
+                    The browser will display a list of Astronomy Pictures 
+                    of the Day from NASA's archive based on your selected time.
+                    <br/>
+                    Select your desired time and click Continue.
+                    <br/>
+                    <br/>
+                    In case you're not familiar with Astronomy Picture 
+                    of the Day go check it out {apodLink}.
+                </p>
+            </div>
             <DateRangePicker
                 className={style.dateRangePicker}
                 ranges={inputDateRanges}
