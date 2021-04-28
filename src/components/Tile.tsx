@@ -27,6 +27,7 @@ export default function Tile( { url, date, thumbnailUrl }: Props ) {
             height: 150px;
             margin: 2px;
             flex-grow: 1;
+            max-width: 400px;
         `,
         overlay: css`
             display: flex;
