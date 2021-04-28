@@ -112,7 +112,6 @@ export default function Start({ fetchData, setDarkMode }: Props) {
     return (
         <div className={style.wrapper}>
             <nav className={style.navigation}>
-                <h3></h3>
                 <DarkModeSwitch setDarkMode={setDarkMode}/>
             </nav>
             <h3>Welcome to</h3>
