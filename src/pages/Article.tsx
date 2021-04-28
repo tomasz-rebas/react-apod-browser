@@ -26,6 +26,8 @@ export default function PicturePage({ data, adjacentArticles }: Props) {
         wrapper: css`
             display: flex;
             justify-content: center;
+            margin-left: 6px;
+            margin-right: 6px;
         `,
         main: css`
             display: flex;
