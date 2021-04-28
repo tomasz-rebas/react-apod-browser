@@ -44,7 +44,7 @@ export default function Home({ data, fetchError, setDarkMode }: Props) {
             flex-wrap: wrap;
             background-color: ${darkMode ? `#ddd` : `#333`};
             box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-            height: 60px;
+            min-height: 60px;
         `,
         grid: css`
             display: flex;

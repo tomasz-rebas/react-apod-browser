@@ -16,7 +16,7 @@ export default function DarkModeSwitch({ setDarkMode }: Props) {
             display: inline-block;
             width: 60px;
             height: 34px;
-            margin-right: 10px;
+            margin: 10px;
         `,
         slider: css`  
             position: absolute;

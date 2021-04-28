@@ -65,7 +65,7 @@ export default function Start({ fetchData, setDarkMode }: Props) {
             flex-wrap: wrap;
             background-color: ${darkMode ? `#ddd` : `#333`};
             box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-            height: 60px;
+            min-height: 60px;
         `,
         link: css`
             color: ${darkMode ? `#ddd` : `#333`};
