@@ -102,6 +102,8 @@ export default function Routes() {
                         background-color: ${darkMode ? `#333` : `#ddd`};
                         color: ${darkMode ? `#ddd` : `#333`};
                         margin: 0;
+                        height: 100%;
+                        min-height: 100%;
                     }
                 `}
             />
