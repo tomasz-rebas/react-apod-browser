@@ -99,10 +99,13 @@ export default function Start({ fetchData, setDarkMode }: Props) {
         `
     }
 
-    const apodLink = <a 
+    const apodLink = 
+    <a 
         className={style.link}
         href="https://apod.nasa.gov/apod/astropix.html"
-        target="_blank">
+        target="_blank"
+        rel="noreferrer"
+    >
             here
     </a>;
 
