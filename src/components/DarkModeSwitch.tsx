@@ -29,22 +29,43 @@ export default function DarkModeSwitch({ setDarkMode }: Props) {
             -webkit-transition: .4s;
             transition: .4s;
             border-radius: 34px;
-            &:before {
-                position: absolute;
-                content: "";
-                height: 26px;
-                width: 26px;
-                left: 4px;
-                bottom: 4px;
-                background-color: ${darkMode ? `#ddd` : `#333`};
-                -webkit-transition: .4s;
-                transition: .4s;
-                border-radius: 50%;
-                ${darkMode ? `
-                -webkit-transform: translateX(26px);
-                -ms-transform: translateX(26px);
-                transform: translateX(26px);` : ``}
-            }
+        `,
+        circle: css `
+            position: absolute;
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: ${darkMode ? `#ddd` : `#333`};
+            -webkit-transition: .4s;
+            transition: .4s;
+            border-radius: 50%;
+            ${darkMode ? `
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);` : ``}
+        `,
+        moon: css`
+            background-color: ${darkMode ? `#ff6200` : `orange`};
+            -webkit-transition: .4s;
+            transition: .4s;
+            position: absolute;
+            height: 18px;
+            width: 18px;
+            border-radius: 50%;
+            top: 4px;
+            left: 4px;
+        `,
+        shadow: css`
+            background-color: ${darkMode ? `#ddd` : `#333`};
+            -webkit-transition: .4s;
+            transition: .4s;
+            position: absolute;
+            height: 15px;
+            width: 15px;
+            border-radius: 50%;
+            bottom: 5px;
+            left: 5px;
         `,
         input: css`
             visibility: hidden;
@@ -59,7 +80,13 @@ export default function DarkModeSwitch({ setDarkMode }: Props) {
                     type="checkbox"
                     onChange={() => setDarkMode(!darkMode)}
                 />
-                <span className={style.slider}></span>
+                <span className={style.slider}>
+                    <span className={style.circle}>
+                        <span className={style.moon}>
+                            <span className={style.shadow}></span>
+                        </span>
+                    </span>
+                </span>
             </label>
         </div>
     );
