@@ -20,9 +20,9 @@ export default function Tile( { url, date, thumbnailUrl }: Props ) {
             display: flex;
             position: relative;
             background-image: url("${thumbnailUrl ? thumbnailUrl : url}");
-            background-size: 150px;
             background-repeat: no-repeat;
             background-size: cover;
+            background-position: center;
             flex-basis: 200px;
             height: 150px;
             margin: 2px;
