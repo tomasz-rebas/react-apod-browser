@@ -1,11 +1,15 @@
 import { css } from '@emotion/css';
+import { useContext } from 'react';
+import { ThemeContext } from './Routes';
 
 export default function SadEmoji() {
+
+    const darkMode = useContext(ThemeContext);
 
     const style = {
         head: css`
             position: relative;
-            border: 3px solid #ddd;
+            border: 3px solid ${darkMode ? `#ddd` : `#333`};
             border-radius: 50%;
             width: 120px;
             height: 120px;
@@ -18,7 +22,7 @@ export default function SadEmoji() {
             margin-left: 20px;
             margin-right: 20px;
             span {
-                border: 8px solid #ddd;
+                border: 8px solid ${darkMode ? `#ddd` : `#333`};
                 border-radius: 50%;
                 display: inline-block;
                 width: 0px;
@@ -26,7 +30,7 @@ export default function SadEmoji() {
             }
         `,
         mouth: css`
-            border: 3px solid #ddd;
+            border: 3px solid ${darkMode ? `#ddd` : `#333`};
             border-bottom-color: rgba(0, 0, 0, 0);
             border-left-color: rgba(0, 0, 0, 0);
             border-right-color: rgba(0, 0, 0, 0);
