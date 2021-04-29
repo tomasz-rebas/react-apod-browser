@@ -38,15 +38,7 @@ export default function PicturePage({ data, adjacentArticles }: Props) {
         header: css`
             text-align: center;
         `,
-        link: css`
-            color: ${darkMode ? `#333` : `#ddd`};
-            margin-left: 15px;
-            margin-right: 15px;
-            text-align: center;
-            text-decoration: none;
-            &:visited {
-                color: ${darkMode ? `#333` : `#ddd`};
-            }
+        linkWrapper: css`
             &:first-child {
                 flex: 1;
                 text-align: left;
@@ -54,6 +46,17 @@ export default function PicturePage({ data, adjacentArticles }: Props) {
             &:last-child {
                 flex: 1;
                 text-align: right;
+            }
+        `,
+        link: css`
+            display: inline-block;
+            color: ${darkMode ? `#333` : `#ddd`};
+            margin-left: 15px;
+            margin-right: 15px;
+            text-align: center;
+            text-decoration: none;
+            &:visited {
+                color: ${darkMode ? `#333` : `#ddd`};
             }
             span {
                 @media (max-width: 380px) {
@@ -108,6 +111,7 @@ export default function PicturePage({ data, adjacentArticles }: Props) {
     return (
         <div>
             <nav className={style.navigation}>
+                <div className={style.linkWrapper}>
                 {
                     adjacentArticles.previous ?
                     <Link to={`/${adjacentArticles.previous}`} className={style.link}>
@@ -117,9 +121,13 @@ export default function PicturePage({ data, adjacentArticles }: Props) {
                         <h3>&#60;<span> Previous</span></h3>
                     </div>
                 }
-                <Link to="/home" className={style.link}>
-                    <h3>Homepage</h3>
-                </Link>
+                </div>
+                <div className={style.linkWrapper}>
+                    <Link to="/home" className={style.link}>
+                        <h3>Homepage</h3>
+                    </Link>
+                </div>
+                <div className={style.linkWrapper}>
                 {
                     adjacentArticles.next ?
                     <Link to={`/${adjacentArticles.next}`} className={style.link}>
@@ -129,6 +137,7 @@ export default function PicturePage({ data, adjacentArticles }: Props) {
                         <h3><span>Next </span>&#62;</h3>
                     </div>
                 }
+                </div>
             </nav>
             <div className={style.wrapper}>   
                 <main className={style.main}>
