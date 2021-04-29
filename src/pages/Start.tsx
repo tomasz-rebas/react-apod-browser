@@ -119,42 +119,44 @@ export default function Start({ fetchData, setDarkMode }: Props) {
             <nav className={style.navigation}>
                 <DarkModeSwitch setDarkMode={setDarkMode}/>
             </nav>
-            <div className={style.textContainer}>
-                <h3>Welcome to</h3>
-                <h1>Astronomy Picture of the Day Browser</h1>
-                <p>
-                    The browser will display a list of Astronomy Pictures 
-                    of the Day from NASA's archive based on your selected time.
-                    <br/>
-                    Select your desired time and click Continue.
-                    <br/>
-                    <br/>
-                    In case you're not familiar with Astronomy Picture 
-                    of the Day go check it out {apodLink}.
-                </p>
-            </div>
-            <div className={style.inputWrapper}>
-                <DateRangePicker
-                    className={style.dateRangePicker}
-                    ranges={inputDateRanges}
-                    months={2}
-                    direction="vertical"
-                    showSelectionPreview={true}
-                    moveRangeOnFirstSelection={false}
-                    onChange={handleChange}
-                    minDate={new Date('January 16, 1995 00:00:00')}
-                    maxDate={new Date()}
-                    shownDate={addDays(new Date(), -30)}
-                />
-                <Link to="/home">
-                    <button 
-                        className={style.button}
-                        onClick={handleClick}
-                    >
-                        Continue
-                    </button>
-                </Link>
-            </div>
+            <main>
+                <div className={style.textContainer}>
+                    <h3>Welcome to</h3>
+                    <h1>Astronomy Picture of the Day Browser</h1>
+                    <p>
+                        The browser will display a list of Astronomy Pictures 
+                        of the Day from NASA's archive based on your selected time.
+                        <br/>
+                        Select your desired time and click Continue.
+                        <br/>
+                        <br/>
+                        In case you're not familiar with Astronomy Picture 
+                        of the Day go check it out {apodLink}.
+                    </p>
+                </div>
+                <div className={style.inputWrapper}>
+                    <DateRangePicker
+                        className={style.dateRangePicker}
+                        ranges={inputDateRanges}
+                        months={2}
+                        direction="vertical"
+                        showSelectionPreview={true}
+                        moveRangeOnFirstSelection={false}
+                        onChange={handleChange}
+                        minDate={new Date('January 16, 1995 00:00:00')}
+                        maxDate={new Date()}
+                        shownDate={addDays(new Date(), -30)}
+                    />
+                    <Link to="/home">
+                        <button 
+                            className={style.button}
+                            onClick={handleClick}
+                        >
+                            Continue
+                        </button>
+                    </Link>
+                </div>
+            </main>
         </div>
     );
 }

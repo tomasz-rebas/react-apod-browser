@@ -60,6 +60,7 @@ export default function Home({ data, fetchError, setDarkMode }: Props) {
                 </Link>
                 <DarkModeSwitch setDarkMode={setDarkMode}/>
             </nav>
+            <main>
             {
                 fetchError !== '' ? 
                 <FetchError fetchError={fetchError}/> :
@@ -69,6 +70,7 @@ export default function Home({ data, fetchError, setDarkMode }: Props) {
                 </div> :
                 <LoadingSpinner/>
             }
+            </main>
         </div>
     );
 }
