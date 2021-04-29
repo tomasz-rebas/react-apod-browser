@@ -35,7 +35,7 @@ export default function Routes() {
         setApodData(null);
         setFetchError('');
 
-        const url = `https://api.nasa.gov/planetary/apod?api_key=wAdeucxqcxW23cUydKnHI5YGEbljt8aVE4NP0Y3L&start_date=${startDate}&end_date=${endDate}&thumbs=true`;
+        const url = `${process.env.REACT_APP_APOD_URL}?api_key=${process.env.REACT_APP_API_KEY}&start_date=${startDate}&end_date=${endDate}&thumbs=true`;
 
         try {
             console.log(`Fetching data for: ${startDate} to ${endDate}...`);

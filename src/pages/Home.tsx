@@ -26,8 +26,6 @@ export default function Home({ data, fetchError, setDarkMode }: Props) {
         />
     ) : '';
 
-    console.log(darkMode);
-
     const style = {
         link: css`
             color: ${darkMode ? `#333` : `#ddd`};

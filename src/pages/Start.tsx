@@ -30,8 +30,6 @@ export default function Start({ fetchData, setDarkMode }: Props) {
     ]);
 
     const darkMode = useContext(ThemeContext);
-    
-    console.log(darkMode);
 
     function handleChange(item: any) {
 
