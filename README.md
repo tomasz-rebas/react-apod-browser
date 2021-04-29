@@ -2,15 +2,23 @@
 
 Astronomy Picture of the Day Browser
 
-`Development in progress!`
+### How does it work?
+
+1. Fetches the data about [Astronomy Picture of the Day](https://apod.nasa.gov/apod/astropix.html) from NASA's archive based on your date input.
+2. Displays a list of fetched APODs in the form of clickable tiles.
+3. Hover over the tile to display its corresponding date.
+4. Click the tile to view detailed information about the APOD.
 
 Features:
-- Fetches the data about [Astronomy Picture of the Day](https://apod.nasa.gov/apod/astropix.html) from NASA's archive based on your time input.
-- Displays a list of fetched APODs in the form of clickable tiles.
-- Hover over the tile to display its corresponding date.
-- Click the tile to view detailed information about the APOD.
+- grid-based design,
+- fully responsive,
+- dark mode.
 
 Tech stack: [ReactJS](https://reactjs.org), [React Router](https://reactrouter.com/), [TypeScript](https://www.typescriptlang.org/), [Emotion](https://emotion.sh/docs/introduction)
+
+Try it out on [Netlify](https://youthful-perlman-f93cf5.netlify.app/)!
+
+Note: this is a Single Page App without server-side routing. You won't be able to refresh any subpage.
 
 # Getting Started with Create React App
 
