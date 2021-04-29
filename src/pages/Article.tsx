@@ -42,25 +42,23 @@ export default function PicturePage({ data, adjacentArticles }: Props) {
             color: ${darkMode ? `#333` : `#ddd`};
             margin-left: 15px;
             margin-right: 15px;
-            width: 100px;
             text-align: center;
             text-decoration: none;
             &:visited {
                 color: ${darkMode ? `#333` : `#ddd`};
             }
-            &:nth-child(1) {
+            &:first-child {
+                flex: 1;
                 text-align: left;
             }
-            &:nth-child(3) {
+            &:last-child {
+                flex: 1;
                 text-align: right;
             }
             span {
-                @media (max-width: 410px) {
+                @media (max-width: 380px) {
                     display: none;
                 }
-            }
-            @media (max-width: 410px) {
-                width: auto;
             }
         ;`,
         picture: css`
@@ -101,6 +99,9 @@ export default function PicturePage({ data, adjacentArticles }: Props) {
             background-color: ${darkMode ? `#ddd` : `#333`};
             box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
             min-height: 60px;
+        `,
+        hidden: css`
+            visibility: hidden;
         `
     };
 
@@ -112,7 +113,9 @@ export default function PicturePage({ data, adjacentArticles }: Props) {
                     <Link to={`/${adjacentArticles.previous}`} className={style.link}>
                         <h3>&#60;<span> Previous</span></h3>
                     </Link> :
-                    <div className={style.link}></div>
+                    <div className={style.link + ' ' + style.hidden}>     
+                        <h3>&#60;<span> Previous</span></h3>
+                    </div>
                 }
                 <Link to="/home" className={style.link}>
                     <h3>Homepage</h3>
@@ -122,7 +125,9 @@ export default function PicturePage({ data, adjacentArticles }: Props) {
                     <Link to={`/${adjacentArticles.next}`} className={style.link}>
                         <h3><span>Next </span>&#62;</h3>
                     </Link> :
-                    <div className={style.link}></div>
+                    <div className={style.link + ' ' + style.hidden}>
+                        <h3><span>Next </span>&#62;</h3>
+                    </div>
                 }
             </nav>
             <div className={style.wrapper}>   
