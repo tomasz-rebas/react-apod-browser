@@ -64,10 +64,10 @@ export default function Home({ data, fetchError, setDarkMode }: Props) {
             {
                 fetchError !== '' ? 
                 <FetchError fetchError={fetchError}/> :
-                // data ?
-                // <div className={style.grid}>
-                //     {tiles}
-                // </div> :
+                data ?
+                <div className={style.grid}>
+                    {tiles}
+                </div> :
                 <LoadingSpinner/>
             }
             </main>
