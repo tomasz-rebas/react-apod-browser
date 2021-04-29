@@ -88,6 +88,9 @@ export default function Start({ fetchData, setDarkMode }: Props) {
                 background-color: #888;
             };
         `,
+        buttonLink: css`
+            text-decoration: none;
+        `,
         dateRangePicker: css`
             @media (max-width: 600px) {
                 .rdrDefinedRangesWrapper {
@@ -147,7 +150,7 @@ export default function Start({ fetchData, setDarkMode }: Props) {
                         maxDate={new Date()}
                         shownDate={addDays(new Date(), -30)}
                     />
-                    <Link to="/home">
+                    <Link to="/home" className={style.buttonLink}>
                         <button 
                             className={style.button}
                             onClick={handleClick}
