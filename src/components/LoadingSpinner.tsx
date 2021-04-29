@@ -34,6 +34,20 @@ export default function LoadingSpinner() {
     const bright = 'rgba(150, 150, 150, 0.9)';
     const dark = 'rgba(0, 0, 0, .1)';
 
+    const thickBorders = `
+        border: 12px solid ${bright};
+        border-top-color: ${dark};
+        border-right-color: ${dark};
+        border-bottom-color: ${dark};
+    `;
+
+    const thinBorders = `
+        border: 6px solid ${bright};
+        border-top-color: ${dark};
+        border-right-color: ${dark};
+        border-bottom-color: ${dark};
+    `;
+
     const style = {
         spinner: css`
             position: absolute;
@@ -57,55 +71,55 @@ export default function LoadingSpinner() {
         outerCircle: css`
             width: 300px;
             height: 300px;
-            border: 12px solid ${bright};
-            border-top-color: ${dark};
-            border-right-color: ${dark};
-            border-bottom-color: ${dark};
+            ${thickBorders}
             animation: ${animations.rotationClockwise} 3s infinite linear;
+
+            @media (max-width: 400px) {
+                width: 150px;
+                height: 150px;
+                ${thinBorders}
+            }
 
             @media (max-height: 600px) {
                 width: 150px;
                 height: 150px;
-                border: 6px solid ${bright};
-                border-top-color: ${dark};
-                border-right-color: ${dark};
-                border-bottom-color: ${dark};
+                ${thinBorders}
             }
         `,
         midCircle: css`
             width: 240px;
             height: 240px;
-            border: 12px solid ${bright};
-            border-left-color: ${dark};
-            border-right-color: ${dark};
-            border-bottom-color: ${dark};
+            ${thickBorders}
             animation: ${animations.rotationCounterClockwise} 2s infinite linear;
+
+            @media (max-width: 400px) {
+                width: 120px;
+                height: 120px;
+                ${thinBorders}
+            }
 
             @media (max-height: 600px) {
                 width: 120px;
                 height: 120px;
-                border: 6px solid ${bright};
-                border-top-color: ${dark};
-                border-right-color: ${dark};
-                border-bottom-color: ${dark};
+                ${thinBorders}
             }
         `,
         innerCircle: css`
             width: 180px;
             height: 180px;
-            border: 12px solid ${bright};
-            border-top-color: ${dark};
-            border-left-color: ${dark};
-            border-bottom-color: ${dark};
+            ${thickBorders}
             animation: ${animations.rotationClockwise} 1s infinite linear;
+
+            @media (max-width: 400px) {
+                width: 90px;
+                height: 90px;
+                ${thinBorders}
+            }
 
             @media (max-height: 600px) {
                 width: 90px;
                 height: 90px;
-                border: 6px solid ${bright};
-                border-top-color: ${dark};
-                border-right-color: ${dark};
-                border-bottom-color: ${dark};
+                ${thinBorders}
             }
         `
     };
