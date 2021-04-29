@@ -48,6 +48,20 @@ export default function PicturePage({ data, adjacentArticles }: Props) {
             &:visited {
                 color: ${darkMode ? `#333` : `#ddd`};
             }
+            &:nth-child(1) {
+                text-align: left;
+            }
+            &:nth-child(3) {
+                text-align: right;
+            }
+            span {
+                @media (max-width: 410px) {
+                    display: none;
+                }
+            }
+            @media (max-width: 410px) {
+                width: auto;
+            }
         ;`,
         picture: css`
             opacity: 0;
@@ -87,11 +101,6 @@ export default function PicturePage({ data, adjacentArticles }: Props) {
             background-color: ${darkMode ? `#ddd` : `#333`};
             box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
             min-height: 60px;
-            
-            @media (max-width: 410px) {
-                flex-direction: column;
-                align-items: center;
-            }
         `
     };
 
@@ -101,7 +110,7 @@ export default function PicturePage({ data, adjacentArticles }: Props) {
                 {
                     adjacentArticles.previous ?
                     <Link to={`/${adjacentArticles.previous}`} className={style.link}>
-                        <h3>&#60; Previous</h3>
+                        <h3>&#60;<span> Previous</span></h3>
                     </Link> :
                     <div className={style.link}></div>
                 }
@@ -111,7 +120,7 @@ export default function PicturePage({ data, adjacentArticles }: Props) {
                 {
                     adjacentArticles.next ?
                     <Link to={`/${adjacentArticles.next}`} className={style.link}>
-                        <h3>Next &#62;</h3>
+                        <h3><span>Next </span>&#62;</h3>
                     </Link> :
                     <div className={style.link}></div>
                 }
