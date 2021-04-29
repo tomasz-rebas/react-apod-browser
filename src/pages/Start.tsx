@@ -101,7 +101,7 @@ export default function Start({ fetchData, setDarkMode }: Props) {
             margin-left: 6px;
             margin-right: 6px;
         `,
-        mango: css`
+        inputWrapper: css`
             display: inline-block;
         `
     }
@@ -135,7 +135,7 @@ export default function Start({ fetchData, setDarkMode }: Props) {
                     of the Day go check it out {apodLink}.
                 </p>
             </div>
-            <div className={style.mango}>
+            <div className={style.inputWrapper}>
                 <DateRangePicker
                     className={style.dateRangePicker}
                     ranges={inputDateRanges}
