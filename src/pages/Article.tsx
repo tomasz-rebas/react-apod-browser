@@ -50,6 +50,7 @@ export default function PicturePage({ data, adjacentArticles }: Props) {
             }
         ;`,
         picture: css`
+            opacity: 0;
             object-fit: contain;
             width: auto;
             height: auto;
@@ -60,6 +61,8 @@ export default function PicturePage({ data, adjacentArticles }: Props) {
             max-width: inherit;
             max-height: 500px;
             text-align: center;
+            background: url(${data.url}) center center no-repeat;
+            background-size: contain;
         `,
         iframeWrapper: css`
             text-align: center;
