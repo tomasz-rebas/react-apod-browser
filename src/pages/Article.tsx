@@ -94,6 +94,10 @@ export default function PicturePage({ data, adjacentArticles }: Props) {
         p: css`
             text-align: justify;
             font-size: 1.2em;
+
+            @media (max-width: 640px) {
+                text-align: left;
+            }
         `,
         navigation: css`
             display: flex;
