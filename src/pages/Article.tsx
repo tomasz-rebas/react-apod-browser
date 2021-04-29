@@ -51,8 +51,8 @@ export default function PicturePage({ data, adjacentArticles }: Props) {
         link: css`
             display: inline-block;
             color: ${darkMode ? `#333` : `#ddd`};
-            margin-left: 15px;
-            margin-right: 15px;
+            padding-left: 15px;
+            padding-right: 15px;
             text-align: center;
             text-decoration: none;
             &:visited {
