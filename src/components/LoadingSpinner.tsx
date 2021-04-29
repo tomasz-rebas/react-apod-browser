@@ -40,8 +40,6 @@ export default function LoadingSpinner() {
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
-            width: 300px;
-            height: 300px;
 
             span {
                 position: absolute;
@@ -50,6 +48,10 @@ export default function LoadingSpinner() {
                 top: 50%;
                 transform: translate(-50%, -50%);
                 border-radius: 100%;
+            }
+
+            @media (max-height: 600px) {
+                top: 60%;
             }
         `,
         outerCircle: css`
@@ -60,6 +62,15 @@ export default function LoadingSpinner() {
             border-right-color: ${dark};
             border-bottom-color: ${dark};
             animation: ${animations.rotationClockwise} 3s infinite linear;
+
+            @media (max-height: 600px) {
+                width: 200px;
+                height: 200px;
+                border: 8px solid ${bright};
+                border-top-color: ${dark};
+                border-right-color: ${dark};
+                border-bottom-color: ${dark};
+            }
         `,
         midCircle: css`
             width: 240px;
@@ -69,6 +80,15 @@ export default function LoadingSpinner() {
             border-right-color: ${dark};
             border-bottom-color: ${dark};
             animation: ${animations.rotationCounterClockwise} 2s infinite linear;
+
+            @media (max-height: 600px) {
+                width: 160px;
+                height: 160px;
+                border: 8px solid ${bright};
+                border-top-color: ${dark};
+                border-right-color: ${dark};
+                border-bottom-color: ${dark};
+            }
         `,
         innerCircle: css`
             width: 180px;
@@ -78,6 +98,15 @@ export default function LoadingSpinner() {
             border-left-color: ${dark};
             border-bottom-color: ${dark};
             animation: ${animations.rotationClockwise} 1s infinite linear;
+
+            @media (max-height: 600px) {
+                width: 120px;
+                height: 120px;
+                border: 8px solid ${bright};
+                border-top-color: ${dark};
+                border-right-color: ${dark};
+                border-bottom-color: ${dark};
+            }
         `
     };
 
