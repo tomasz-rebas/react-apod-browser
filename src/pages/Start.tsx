@@ -76,8 +76,7 @@ export default function Start({ fetchData, setDarkMode }: Props) {
         button: css`
             display: block;
             padding: 15px 30px 15px 30px;
-            margin: auto;
-            margin-top: 30px;
+            margin-top: 3px;
             margin-bottom: 30px;
             font-family: inherit;
             font-size: 1.2em;
@@ -86,6 +85,7 @@ export default function Start({ fetchData, setDarkMode }: Props) {
             color: ${darkMode ? `#ddd` : `#333`};
             background-color: ${darkMode ? `#555` : `#bbb`};
             cursor: pointer;
+            width: 100%;
             &:hover {
                 background-color: #888;
             };
@@ -100,6 +100,9 @@ export default function Start({ fetchData, setDarkMode }: Props) {
         textContainer: css`
             margin-left: 6px;
             margin-right: 6px;
+        `,
+        mango: css`
+            display: inline-block;
         `
     }
 
@@ -132,26 +135,28 @@ export default function Start({ fetchData, setDarkMode }: Props) {
                     of the Day go check it out {apodLink}.
                 </p>
             </div>
-            <DateRangePicker
-                className={style.dateRangePicker}
-                ranges={inputDateRanges}
-                months={2}
-                direction="vertical"
-                showSelectionPreview={true}
-                moveRangeOnFirstSelection={false}
-                onChange={handleChange}
-                minDate={new Date('January 16, 1995 00:00:00')}
-                maxDate={new Date()}
-                shownDate={addDays(new Date(), -30)}
-            />
-            <Link to="/home">
-                <button 
-                    className={style.button}
-                    onClick={handleClick}
-                >
-                    Continue
-                </button>
-            </Link>
+            <div className={style.mango}>
+                <DateRangePicker
+                    className={style.dateRangePicker}
+                    ranges={inputDateRanges}
+                    months={2}
+                    direction="vertical"
+                    showSelectionPreview={true}
+                    moveRangeOnFirstSelection={false}
+                    onChange={handleChange}
+                    minDate={new Date('January 16, 1995 00:00:00')}
+                    maxDate={new Date()}
+                    shownDate={addDays(new Date(), -30)}
+                />
+                <Link to="/home">
+                    <button 
+                        className={style.button}
+                        onClick={handleClick}
+                    >
+                        Continue
+                    </button>
+                </Link>
+            </div>
         </div>
     );
 }
