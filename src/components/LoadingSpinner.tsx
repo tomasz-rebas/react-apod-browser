@@ -64,9 +64,9 @@ export default function LoadingSpinner() {
             animation: ${animations.rotationClockwise} 3s infinite linear;
 
             @media (max-height: 600px) {
-                width: 200px;
-                height: 200px;
-                border: 8px solid ${bright};
+                width: 150px;
+                height: 150px;
+                border: 6px solid ${bright};
                 border-top-color: ${dark};
                 border-right-color: ${dark};
                 border-bottom-color: ${dark};
@@ -82,9 +82,9 @@ export default function LoadingSpinner() {
             animation: ${animations.rotationCounterClockwise} 2s infinite linear;
 
             @media (max-height: 600px) {
-                width: 160px;
-                height: 160px;
-                border: 8px solid ${bright};
+                width: 120px;
+                height: 120px;
+                border: 6px solid ${bright};
                 border-top-color: ${dark};
                 border-right-color: ${dark};
                 border-bottom-color: ${dark};
@@ -100,9 +100,9 @@ export default function LoadingSpinner() {
             animation: ${animations.rotationClockwise} 1s infinite linear;
 
             @media (max-height: 600px) {
-                width: 120px;
-                height: 120px;
-                border: 8px solid ${bright};
+                width: 90px;
+                height: 90px;
+                border: 6px solid ${bright};
                 border-top-color: ${dark};
                 border-right-color: ${dark};
                 border-bottom-color: ${dark};
