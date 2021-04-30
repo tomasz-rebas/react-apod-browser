@@ -6,6 +6,7 @@ import FetchError from '../components/FetchError';
 import { useContext } from 'react';
 import { ThemeContext } from '../components/Routes';
 import DarkModeSwitch from '../components/DarkModeSwitch';
+import Article from '../components/Article';
 
 type Props = {
     data: any, /*Array<{[key: string]: string}>*/
@@ -37,6 +38,21 @@ export default function HomePage({ data, fetchError, setDarkMode }: Props) {
         `
     };
 
+    function evaluateMainContent() {
+        console.log(data);
+        if (fetchError !== '') {
+            return <FetchError fetchError={fetchError}/>;
+        } else if (data) {
+            if (data.length > 1) {
+                return <GridList data={data}/>;
+            } else {
+                return <Article data={data[0]}/>
+            }
+        } else {
+            return <LoadingSpinner/>;
+        }
+    }
+
     return (
         <div>
             <nav className={style.navigation}>
@@ -45,13 +61,7 @@ export default function HomePage({ data, fetchError, setDarkMode }: Props) {
                 </Link>
                 <DarkModeSwitch setDarkMode={setDarkMode}/>
             </nav>
-            <main>
-            {
-                fetchError !== '' ? 
-                <FetchError fetchError={fetchError}/> :
-                data ? <GridList data={data}/> : <LoadingSpinner/>
-            }
-            </main>
+            <main>{evaluateMainContent()}</main>
         </div>
     );
 }
