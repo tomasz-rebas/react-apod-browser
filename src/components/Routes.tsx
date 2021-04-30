@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Switch, Route, useHistory } from 'react-router-dom';
 
-import Home from '../pages/Home';
-import Article from '../pages/Article';
-import Start from '../pages/Start';
+import HomePage from '../pages/HomePage';
+import ArticlePage from '../pages/ArticlePage';
+import StartPage from '../pages/StartPage';
 
 import { Global, css } from '@emotion/react';
 
@@ -83,7 +83,7 @@ export default function Routes() {
                         exact path={`/${element.date}`}
                         key={element.date}
                     >
-                        <Article 
+                        <ArticlePage 
                             data={element}
                             adjacentArticles={adjacentArticles}
                         />
@@ -109,13 +109,13 @@ export default function Routes() {
             />
             <Switch>
                 <Route exact path="/">
-                    <Start 
+                    <StartPage 
                         fetchData={fetchData}
                         setDarkMode={setDarkMode}
                     />
                 </Route>
                 <Route exact path="/home">
-                    <Home
+                    <HomePage
                         data={apodData}
                         fetchError={fetchError}
                         setDarkMode={setDarkMode}
