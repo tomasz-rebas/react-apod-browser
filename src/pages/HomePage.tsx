@@ -39,7 +39,6 @@ export default function HomePage({ data, fetchError, setDarkMode }: Props) {
     };
 
     function evaluateMainContent() {
-        console.log(data);
         if (fetchError !== '') {
             return <FetchError fetchError={fetchError}/>;
         } else if (data) {
