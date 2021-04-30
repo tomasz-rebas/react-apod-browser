@@ -13,7 +13,7 @@ type Props = {
     setDarkMode: Function
 }
 
-export default function Home({ data, fetchError, setDarkMode }: Props) {
+export default function HomePage({ data, fetchError, setDarkMode }: Props) {
 
     const darkMode = useContext(ThemeContext);
 

@@ -14,7 +14,7 @@ type Props = {
     }
 }
 
-export default function PicturePage({ data, adjacentArticles }: Props) {
+export default function ArticlePage({ data, adjacentArticles }: Props) {
 
     const darkMode = useContext(ThemeContext);
 

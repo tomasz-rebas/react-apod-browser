@@ -19,7 +19,7 @@ type Props = {
     setDarkMode: Function
 }
 
-export default function Start({ fetchData, setDarkMode }: Props) {  
+export default function StartPage({ fetchData, setDarkMode }: Props) {  
 
     const [inputDateRanges, setInputDateRanges] = useState<any>([
         {
