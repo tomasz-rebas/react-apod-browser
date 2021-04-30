@@ -6,6 +6,7 @@ import FetchError from '../components/FetchError';
 import { useContext } from 'react';
 import { ThemeContext } from '../components/Routes';
 import DarkModeSwitch from '../components/DarkModeSwitch';
+import generateGridMediaQueries from '../functions/generateGridMediaQueries';
 
 type Props = {
     data: any, /*Array<{[key: string]: string}>*/
@@ -45,10 +46,9 @@ export default function Home({ data, fetchError, setDarkMode }: Props) {
             min-height: 60px;
         `,
         grid: css`
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
             margin-top: 10px;
+            display: grid;
+            ${generateGridMediaQueries(200, 2560)}
         `
     };
 
